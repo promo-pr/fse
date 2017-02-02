@@ -1,21 +1,37 @@
+html {
+  height: 100vh;
+}
+body {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .btn, a {
-    .material-icons {
-        vertical-align: middle;
-        line-height: 12px;
-    }
+  .material-icons {
+    vertical-align: middle;
+    line-height: 12px;
+  }
 }
 h1 {
-    display: none;
+  display: none;
 }
 .summary {
-    float: right;
+  float: right;
 }
 .at-column {
-    width: 150px;
+  width: 150px;
 }
 .action-column {
-    width: 100px;
+  width: 100px;
 }
 .status-column {
-    width: 100px;
+  width: 100px;
+}
+.sticky-footer {
+  #footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
 }

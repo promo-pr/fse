@@ -23,7 +23,7 @@ if (isset($this->params['breadcrumbs'])) {
 ?>
 <?php $this->beginContent('@app/themes/layout.php'); ?>
 
-    <section id="Main">
+    <section id="main">
         <div class="container">
         <?= Breadcrumbs::widget([
             'links' => ArrayHelper::merge($panelBreadcrumbs, $breadcrumbs),
@@ -33,7 +33,7 @@ if (isset($this->params['breadcrumbs'])) {
         </div>
     </section>
 
-    <footer id="Footer">
+    <footer id="footer">
         <div class="container">
             <p class="pull-left">&copy; <?= Html::a('Фабрика сайтов', '//promo-pr.ru', ['target'=>'_blank']) ?></p>
             <p class="pull-right"><?= date('Y') ?></p>

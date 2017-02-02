@@ -1,7 +1,22 @@
 @import "variable-overrides.less";
 
-#Header {
+#header {
   background-color: @brand-info;
+}
+.header-top {
+  color: #fff;
+  background-color: #082060;
+  .material-icons {
+    color: #0055dd;
+  }
+  ul {
+    text-align: center;
+    &>li {
+      line-height: 18px;
+      display: inline-block;
+      padding: 8px;
+    }
+  }
 }
 
 .header-title {

@@ -16,9 +16,27 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
 ?>
 <?php $this->beginContent('@app/themes/layout.php'); ?>
 
-<header id="Header">
+<header id="header">
     <div class="header-top">
+        <div class="container">
+            <ul class="nav nav-front">
+                    <li>
+                        <i class="material-icons">phone_iphone</i> <span class="hidden-xs hidden-sm"> +7 495 226 63 39,</span> +7 916 238 08 00
+                    </li>
+                    <li class="xs-right">
+                        <i class="material-icons">email</i> finsudexpert@mail.ru
+                    </li>
+                    <li class="hidden-xs">
+                        <i class="material-icons">place</i> 121170, Москва, ул. Генерала Ермолова, д.2
+                    </li>
+            </ul>
+        </div>
+    </div>
 
+    <div class="header-title">
+        <div class="container">
+            <?= isset($this->blocks['title']) ? "<h1>" . $this->blocks['title'] . "</h1>" : false ?>
+        </div>
     </div>
     <div class="header-nav">
         <?php
@@ -41,18 +59,13 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
         NavBar::end();
         ?>
     </div>
-    <div class="header-title">
-        <div class="container">
-            <?= isset($this->blocks['title']) ? "<h1>" . $this->blocks['title'] . "</h1>" : false ?>
-        </div>
-    </div>
 </header>
 
-<section id="Main">
+<section id="main">
     <?= $content ?>
 </section>
 
-<footer id="Footer" ondblclick="location.href = '<?= \yii\helpers\Url::to(['/user/default/login'])?>'">
+<footer id="footer" ondblclick="location.href = '<?= \yii\helpers\Url::to(['/user/default/login'])?>'">
     <div class="container">
         <p class="pull-left">&copy; <?= Yii::$app->name ?></p>
         <p class="pull-right"><?= date('Y') ?></p>

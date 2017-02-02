@@ -1,1 +1,1 @@
-.btn .material-icons,a .material-icons{vertical-align:middle;line-height:12px}h1{display:none}.summary{float:right}.at-column{width:150px}.action-column{width:100px}.status-column{width:100px}
+html{height:100vh}body{position:relative;overflow-y:auto;overflow-x:hidden}.btn .material-icons,a .material-icons{vertical-align:middle;line-height:12px}h1{display:none}.summary{float:right}.at-column{width:150px}.action-column{width:100px}.status-column{width:100px}.sticky-footer #footer{position:fixed;width:100%;bottom:0}

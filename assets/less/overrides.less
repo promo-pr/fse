@@ -1,6 +1,8 @@
 @import "variable-overrides.less";
 
-
+html {
+  height: 100vh;
+}
 body {
   position: relative;
   overflow-y: auto;
@@ -12,13 +14,15 @@ a:focus, button:focus {
 .grid-view th {
   white-space: nowrap;
 }
-
+.material-icons {
+  font-size: 18px;
+  vertical-align: middle;
+}
 .hint-block {
   display: block;
   margin-top: 5px;
   color: #999;
 }
-
 .error-summary {
   color: #a9513e;
   background: #fdf7f7;
@@ -26,7 +30,6 @@ a:focus, button:focus {
   padding: 10px 20px;
   margin: 0 0 15px 0;
 }
-
 .alert-container {
   position: fixed;
   top: 50px;

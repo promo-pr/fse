@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use promo\widgets\BodyClass;
+use app\widgets\BodyClass;
 
 /* @var $this \yii\web\View */
 /* @var $content string */

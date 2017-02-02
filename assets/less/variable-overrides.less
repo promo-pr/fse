@@ -1,27 +1,33 @@
 @import "../../vendor/bower/bootstrap/less/variables.less";
 
-@font-size-base:          16px;
+@font-size-base:          15px;
 @font-family-sans-serif:  "Roboto Condensed", sans-serif;
 
-@brand-primary:         #334074; // #337ab7
-@brand-success:         #7cab41;
-@brand-info:            #7c3018;
-@brand-warning:         #fec26a;
-@brand-danger:          #d9534f;
+@brand-primary:         #003399;
+@brand-success:         #22b96d;
+@brand-info:            darken(@brand-primary, 10%);
+@brand-warning:         #d9c866;
+@brand-danger:          #cc4242;
 
 @input-border-focus: @brand-warning;
 
-@link-color:            @brand-primary;
-@link-hover-color:      darken(@link-color, 15%);
+@link-color: #3366CC;
+@link-hover-color:      #000066;
 @link-hover-decoration: none;
+a:visited {
+  color: #333399;
+}
 
 
-@border-radius-base:        0;
-@border-radius-large:       0;
-@border-radius-small:       0;
+@border-radius-base:        2px;
+@border-radius-large:       2px;
+@border-radius-small:       2px;
 
 @headings-font-weight:    400;
-@headings-color:          @brand-success;
+@headings-color:          @brand-primary;
+.header-title h1, .logo-front h4 {
+  color: @brand-warning;
+}
 
 @alert-link-font-weight:      400;
 @badge-font-weight:           400;
@@ -49,3 +55,47 @@
 @navbar-default-toggle-hover-bg: #ddd;
 @navbar-default-toggle-icon-bar-bg: #888;
 @navbar-default-toggle-border-color: #ddd;
+
+//=== Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color:                      lighten(@gray-light, 15%);
+@navbar-inverse-bg:                         @brand-primary;
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 #fff;
+@navbar-inverse-link-hover-color:           @brand-warning;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             transparent;
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          @brand-warning;
+@navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        @brand-warning;
+
+
+@state-success-text:             @brand-success;
+@state-success-bg:               @brand-info;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #ccc;
+@state-info-bg:                  @brand-info;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             @brand-warning;
+@state-warning-bg:               @brand-info;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              @brand-danger;
+@state-danger-bg:                @brand-info;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+
+@btn-warning-color:              #333;
