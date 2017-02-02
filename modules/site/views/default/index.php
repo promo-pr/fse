@@ -7,10 +7,6 @@ use yii\helpers\Html;
 $this->title = Yii::$app->name;
 ?>
 
-<?php $this->beginBlock('title');
-echo Html::encode($this->title);
-$this->endBlock(); ?>
-
 
 <div class="container">
 

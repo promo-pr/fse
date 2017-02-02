@@ -35,7 +35,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
 
     <div class="header-title">
         <div class="container">
-            <?= isset($this->blocks['title']) ? "<h1>" . $this->blocks['title'] . "</h1>" : false ?>
+            <?= isset($this->blocks['title']) ?
+                "<h1>" . $this->blocks['title'] . "</h1>" :
+                "<div class='header-logo-front'><span>СОЮЗ<br>ФИНАНСОВО-ЭКОНОМИЧЕСКИХ<br>СУДЕБНЫХ ЭКСПЕРТОВ</span></div>"
+            ?>
         </div>
     </div>
     <div class="header-nav">
@@ -44,7 +47,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
             'brandLabel' => Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar-default',
+                'class' => 'navbar-inverse',
             ],
         ]);
         echo Nav::widget([
