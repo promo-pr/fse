@@ -1,0 +1,36 @@
+.upload.thumbnail {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.upload.thumbnail:hover .hidden {
+    display: block!important;
+}
+.upload.thumbnail span {
+    position: absolute;
+    cursor: pointer;
+}
+.upload-crop {
+    bottom: 10px;
+    right: 40px;
+}
+.upload-delete {
+    bottom: 10px;
+    right: 10px;
+}
+.upload-delete i, .upload-crop i {
+    font-size: 24px;
+    text-shadow: 1px 1px 3px #000;
+}
+.cropper-full {
+    position: fixed;
+    top: 50px;
+    bottom: 50px;
+    left: 50px;
+    right: 50px;
+    z-index: 9999;
+}

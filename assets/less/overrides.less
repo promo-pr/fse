@@ -1,0 +1,56 @@
+@import "variable-overrides.less";
+
+
+body {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+a:focus, button:focus {
+  outline: none!important;
+}
+.grid-view th {
+  white-space: nowrap;
+}
+
+.hint-block {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+}
+
+.error-summary {
+  color: #a9513e;
+  background: #fdf7f7;
+  border-left: 3px solid #eed3d7;
+  padding: 10px 20px;
+  margin: 0 0 15px 0;
+}
+
+.alert-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  .alert {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+.element-invisible {
+  display: block;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: transparent;
+}
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
