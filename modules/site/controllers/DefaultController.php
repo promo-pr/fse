@@ -17,6 +17,7 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
+        $this->layout = "@app/themes/base/layouts/front";
         return $this->render('index');
     }
 

@@ -36,7 +36,7 @@ class NodeController extends Controller
         if (($model = Page::findOne(['slug' => $slug])) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException('Страница не найдена');
         }
     }
 

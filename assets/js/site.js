@@ -2,7 +2,9 @@
 
     $(function() {
 
-
+        $('.header-title-h1').click(function () {
+            location.href = '/';
+        })
 
     });
 

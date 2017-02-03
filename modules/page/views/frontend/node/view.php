@@ -6,6 +6,7 @@ use app\modules\admin\rbac\Rbac as AdminRbac;
 /* @var $this yii\web\View */
 /* @var $model app\modules\page\models\backend\Page */
 
+$this->params['breadcrumbs'][] = $model->title;
 ?>
 
 <?php $this->beginBlock('title');
@@ -14,8 +15,8 @@ echo Yii::$app->user->isGuest ?
 echo Html::encode($model->title);
 $this->endBlock(); ?>
 
-<div class="container">
-    <div class="field-body">
-        <?= $model->body ?>
-    </div>
+
+<div class="field-body">
+    <?= $model->body ?>
 </div>
+

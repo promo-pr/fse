@@ -8,6 +8,7 @@
 @brand-info:            darken(@brand-primary, 10%);
 @brand-warning:         #fae181;
 @brand-danger:          #cc4242;
+@brand-hover:           #ede5b7;
 
 @input-border-focus: @brand-warning;
 
@@ -24,7 +25,7 @@ a:visited {
 @border-radius-small:       2px;
 
 @headings-font-weight:    400;
-@headings-color:          @brand-primary;
+@headings-color:          #000;
 .header-title h1, .logo-front h4 {
   color: @brand-warning;
 }
@@ -99,3 +100,11 @@ a:visited {
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
 @btn-warning-color:              #333;
+
+//== Breadcrumbs
+@breadcrumb-padding-vertical:   0;
+@breadcrumb-padding-horizontal: 0;
+@breadcrumb-bg:                 transparent;
+@breadcrumb-color:              #ccc;
+@breadcrumb-active-color:       #555;
+@breadcrumb-separator:          ">";

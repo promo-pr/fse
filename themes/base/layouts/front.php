@@ -19,16 +19,16 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
 <header id="header">
     <div class="header-top" data-spy="affix" data-offset-top="100">
         <div class="container">
-            <ul class="nav nav-front <?= $front ? 'text-center' : ''?>">
-                <li>
-                    <i class="material-icons">phone_iphone</i> <span class="hidden-xs hidden-sm"> +7 495 226 63 39,</span> +7 916 238 08 00
-                </li>
-                <li class="xs-right">
-                    <i class="material-icons">email</i> finsudexpert@mail.ru
-                </li>
-                <li class="hidden-xs">
-                    <i class="material-icons">place</i> 121170, Москва, ул. Генерала Ермолова, д.2
-                </li>
+            <ul class="nav nav-front text-center">
+                    <li>
+                        <i class="material-icons">phone_iphone</i> <span class="hidden-xs hidden-sm"> +7 495 226 63 39,</span> +7 916 238 08 00
+                    </li>
+                    <li class="xs-right">
+                        <i class="material-icons">email</i> finsudexpert@mail.ru
+                    </li>
+                    <li class="hidden-xs">
+                        <i class="material-icons">place</i> 121170, Москва, ул. Генерала Ермолова, д.2
+                    </li>
             </ul>
         </div>
     </div>
@@ -41,7 +41,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
             ?>
         </div>
     </div>
-    <div class="header-nav hidden-lg">
+    <div class="header-nav">
         <?php
         NavBar::begin([
             'options' => [
@@ -49,7 +49,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
             ],
         ]);
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav'],
+            'options' => ['class' => 'navbar-nav navbar-center'],
             'encodeLabels' => false,
             'activateParents' => true,
             'items' => Yii::$app->params['itemsMenu'],
@@ -64,21 +64,11 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]); ?>
-
-        <div class="row">
-            <div class="col-lg-3">
-                <?= Nav::widget([
-                    'options' => ['class' => 'nav nav-pills nav-stacked'],
-                    'encodeLabels' => false,
-                    'activateParents' => true,
-                    'items' => Yii::$app->params['itemsMenu'],
-                ]); ?>
-            </div>
-            <div class="col-lg-9">
-                <?= $content ?>
-            </div>
-        </div>
     </div>
+    
+    <?= $content ?>
+
+    <?= $this->blocks['map'] ?>
 
 </section>
 

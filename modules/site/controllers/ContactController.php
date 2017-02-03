@@ -11,6 +11,7 @@ class ContactController extends Controller
 {
     public function actionIndex()
     {
+        $this->layout = "@app/themes/base/layouts/front";
         $model = new ContactForm();
         $post = Yii::$app->request->post();
         $err = $post['ContactForm']['subject'] == '';

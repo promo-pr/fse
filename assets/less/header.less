@@ -1,33 +1,68 @@
 @import "variable-overrides.less";
 
+.site-default-index, .site-contact-index {
+  #header {
+    background-color: @brand-info;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(img/head_bg.jpg);
+    background-size: cover;
+  }
+}
 #header {
   background-color: @brand-info;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(img/head_bg.jpg);
+  background-image: url(img/title_bg.jpg);
   background-size: cover;
+  .caret {
+    display: inline-block;
+    width: 11px;
+    height: 6px;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background-image: url(img/caret.png);
+  }
 }
 .header-top {
   color: #fff;
   background-color: #082060;
+  top: -35px;
+  transition: top 0.5s;
   .material-icons {
     color: #0055dd;
   }
   ul {
-    text-align: center;
     &>li {
       line-height: 18px;
       display: inline-block;
       padding: 8px;
     }
   }
+  &.affix {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
 }
 
 .header-title {
   background: rgba(20, 50, 170, 0.8);
+  &>.container {
+    position: relative;
+  }
+  span {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: @brand-warning;
+  }
   h1 {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 0;
+    //font-weight: 300;
   }
   .material-icons {
     color: @brand-warning;
@@ -36,6 +71,19 @@
     &:hover {
       color: @brand-danger;
     }
+  }
+}
+.header-title-h1 {
+  padding: 10px 0 10px 100px;
+  background: transparent url(img/logo.png) left center no-repeat;
+  background-size: 80px auto;
+  &>.to-front {
+    position: absolute;
+    width: 100px;
+    top:0;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
   }
 }
 .header-logo-front {
@@ -48,10 +96,23 @@
   background-image: url(img/logo.png);
   background-size: 170px auto;
   &>span {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     position: absolute;
     left: 0;
     right: 0;
     bottom: 8px;
   }
+}
+.navbar {
+  border-radius: 0;
+}
+.navbar-collapse {
+  text-align: center;
+}
+.navbar-nav.navbar-center {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+  background-color: @brand-hover;
 }
