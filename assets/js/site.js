@@ -4,7 +4,9 @@
 
         $('.header-title-h1').click(function () {
             location.href = '/';
-        })
+        });
+
+        $('.nav-side .dropdown.active .dropdown-toggle').trigger('click');
 
     });
 

@@ -17,3 +17,60 @@
     color: #ccc;
   }
 }
+
+.nav {
+  &.nav-side {
+    margin-bottom: 30px;
+    border-top: 5px solid @brand-primary;
+    box-shadow: 1px 1px 10px #ccc;
+    &>li>a:focus, &>li>a:hover {
+      color: #cebe65;
+      background-color: transparent;
+    }
+    .open{
+      &>a, &>a:focus, &>a:hover {
+        color: #cebe65;
+        background-color: transparent;
+      }
+    }
+    &>li {
+      &>a {
+        color: #000;
+      }
+      &.active>a {
+        color: #cebe65;
+      }
+    }
+/*    .active {
+      .dropdown-menu {
+        display: block;
+      }
+      &.open {
+        .dropdown-menu {
+          display: none;
+        }
+      }
+    }*/
+
+    .dropdown-menu {
+      position: relative;
+      float: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      box-shadow: none;
+      &>.active>a, &>.active>a:focus, &>.active>a:hover {
+        color: #000;
+        background-color: @brand-hover;
+      }
+      &>li {
+        &>a {
+          padding: 10px 20px;
+          white-space: normal;
+        }
+      }
+    }
+  }
+}

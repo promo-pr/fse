@@ -66,13 +66,14 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
         ]); ?>
 
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 visible-lg">
                 <?= Nav::widget([
-                    'options' => ['class' => 'nav nav-pills nav-stacked'],
+                    'options' => ['class' => 'nav nav-side'],
                     'encodeLabels' => false,
                     'activateParents' => true,
                     'items' => Yii::$app->params['itemsMenu'],
                 ]); ?>
+
             </div>
             <div class="col-lg-9">
                 <?= $content ?>
