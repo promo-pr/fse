@@ -5,16 +5,18 @@
         $('.header-title-h1').click(function () {
             location.href = '/';
         });
-
+        $(window).on("load resize", function() {
+            stickyFooter();
+        });
+        $('.dropdown').on('shown.bs.dropdown hidden.bs.dropdown', function () {
+            stickyFooter();
+        });
         $('.nav-side .dropdown.active .dropdown-toggle').trigger('click');
 
     });
 
-    $(window).on("load resize", function() {
-        stickyFooter();
-    });
-
     function stickyFooter() {
+
         var $body = $('body'),
             $footer = $('#footer'),
             wh = window.innerHeight,
@@ -25,6 +27,7 @@
         } else {
             $body.removeClass('sticky-footer').css('padding-bottom', 0);
         }
+
     }
 
 })(jQuery);

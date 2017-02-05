@@ -8,7 +8,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $model \app\modules\site\models\ContactForm */
 
 $this->title = 'Контакты';
-$this->params['breadcrumbs'][] = ['label' => 'О нас', 'url' => ['/about']];
+$this->params['breadcrumbs'][] = ['label' => 'О союзе', 'url' => ['/about']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -67,7 +67,7 @@ $this->registerJs("ymaps.ready(init);", $this::POS_END);
     function init(){
         myMap = new ymaps.Map("map", {
             center: [55.733665, 37.519234],
-            zoom: 14,
+            zoom: 16,
             controls: ["routeEditor", "zoomControl", "fullscreenControl"]
         });
 

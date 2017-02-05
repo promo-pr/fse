@@ -13,8 +13,29 @@
   }
 }
 .field-body {
+  h2:first-child, h3:first-child {
+    margin-top: 0;
+  }
   .material-icons {
-    color: #ccc;
+    color: @gray-light;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding-left: 1em;
+    text-indent: -.7em;
+  }
+
+  li::before {
+    content: "• ";
+    vertical-align: middle;
+    font-size: 1.5em;
+    line-height: 1em;
+    color: @brand-gold;
   }
 }
 
@@ -22,23 +43,28 @@
   &.nav-side {
     margin-bottom: 30px;
     border-top: 5px solid @brand-primary;
-    box-shadow: 1px 1px 10px #ccc;
-    &>li>a:focus, &>li>a:hover {
-      color: #cebe65;
+    box-shadow: 1px 1px 5px @gray-light;
+    &>li>a:focus {
+      color: @gray-darker;
+      background-color: transparent;
+    }
+    &>li>a:hover {
+      color: @brand-gold;
       background-color: transparent;
     }
     .open{
       &>a, &>a:focus, &>a:hover {
-        color: #cebe65;
+        color: @brand-gold;
         background-color: transparent;
       }
     }
     &>li {
       &>a {
-        color: #000;
+        color: @gray-darker;
+        font-weight: 400;
       }
       &.active>a {
-        color: #cebe65;
+        color: @brand-gold;
       }
     }
 /*    .active {
@@ -62,12 +88,13 @@
       background-color: transparent;
       box-shadow: none;
       &>.active>a, &>.active>a:focus, &>.active>a:hover {
-        color: #000;
+        color: @gray-darker;
         background-color: @brand-hover;
       }
       &>li {
         &>a {
           padding: 10px 20px;
+          font-weight: 300;
           white-space: normal;
         }
       }

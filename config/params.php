@@ -5,7 +5,7 @@ return [
     'itemsMenu' => [
         ['label' => 'О СОЮЗЕ',
             'items' => [
-                ['label' => 'О нас', 'url' => ['/page/node/view', 'slug'=>'about']],
+                ['label' => 'Основы деятельности', 'url' => ['/page/node/view', 'slug'=>'about']],
                 ['label' => 'Органы управления', 'url' => ['/page/node/view', 'slug'=>'control']],
             ],
         ],

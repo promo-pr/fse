@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "38a20cceba793ed975458df0ffdfc685",
+    "content-hash": "60e3f4f7c21a47655661ee15cb023b06",
     "packages": [
         {
             "name": "bower-asset/air-datepicker",
@@ -496,46 +496,6 @@
             "time": "2016-11-19T12:57:06+00:00"
         },
         {
-            "name": "promo-pr/yii2-widgets",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/promo-pr/yii2-widgets.git",
-                "reference": "0cdbc3c456de5e8ed9d9dce2e78d639aae298653"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/promo-pr/yii2-widgets/zipball/0cdbc3c456de5e8ed9d9dce2e78d639aae298653",
-                "reference": "0cdbc3c456de5e8ed9d9dce2e78d639aae298653",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "~2.0.0"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "promo\\widgets\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Promo-pr",
-                    "email": "1@promo-pr.ru"
-                }
-            ],
-            "description": "System widgets for Yii2",
-            "keywords": [
-                "widgets",
-                "yii2"
-            ],
-            "time": "2016-11-19T16:28:54+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.5",
             "source": {
@@ -653,16 +613,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.11",
+            "version": "2.0.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "4144506d84b5c895e026be4d79ebbef7067ebcd3"
+                "reference": "5c9c894b1d20bc1a39814063adf8a1aeb7c86f77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/4144506d84b5c895e026be4d79ebbef7067ebcd3",
-                "reference": "4144506d84b5c895e026be4d79ebbef7067ebcd3",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/5c9c894b1d20bc1a39814063adf8a1aeb7c86f77",
+                "reference": "5c9c894b1d20bc1a39814063adf8a1aeb7c86f77",
                 "shasum": ""
             },
             "require": {
@@ -749,7 +709,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-02-01T16:46:29+00:00"
+            "time": "2017-02-02T18:53:16+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",

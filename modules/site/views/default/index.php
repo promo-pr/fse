@@ -13,6 +13,10 @@ $this->title = Yii::$app->name;
 Привет!
 
 
+
+    <a class="test-popup-link" href="path-to-image.jpg">Open popup</a>
+
+
 </div>
 
 

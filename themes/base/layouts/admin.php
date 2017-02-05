@@ -1,6 +1,6 @@
 <?php
 
-use promo\widgets\Alert;
+use app\widgets\Alert;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
 use app\assets\AdminAsset;
