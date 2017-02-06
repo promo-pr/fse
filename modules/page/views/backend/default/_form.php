@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use vova07\imperavi\Widget;
 use app\widgets\date\Picker;
+use yii\helpers\ArrayHelper;
+use app\modules\page\models\backend\PageCategory;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -20,7 +22,7 @@ use yii\helpers\Url;
         <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-xs-3 col-md-2">
-      <?= $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\modules\page\models\backend\PageCategory::find()->all(), 'id', 'title')) ?>
+      <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(PageCategory::find()->all(), 'id', 'title')) ?>
     </div>
     <div class="col-xs-3 col-md-2">
         <?php $model->status = $model->isNewRecord ? 1 : $model->status; ?>
