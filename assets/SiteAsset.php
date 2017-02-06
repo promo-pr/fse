@@ -9,10 +9,12 @@ class SiteAsset extends AssetBundle
 {
     public $sourcePath = '@app/assets';
     public $css = [
+        'css/jquery.bxslider.min.css',
         'css/site.css'
     ];
     public $js = [
         'js/lib.js',
+        'js/jquery.bxslider.min.js',
         'js/site.js'
     ];
     public $depends = [

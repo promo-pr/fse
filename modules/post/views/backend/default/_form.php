@@ -7,7 +7,7 @@ use app\widgets\date\Picker;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\page\models\backend\Page */
+/* @var $model app\modules\post\models\backend\Post */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
@@ -16,11 +16,8 @@ use yii\helpers\Url;
     'options'=>['enctype'=>'multipart/form-data'] // important
 ]); ?>
 <div class="row">
-    <div class="col-xs-6 col-md-8">
+    <div class="col-xs-9 col-md-10">
         <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="col-xs-3 col-md-2">
-      <?= $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\modules\page\models\backend\PageCategory::find()->all(), 'id', 'title')) ?>
     </div>
     <div class="col-xs-3 col-md-2">
         <?php $model->status = $model->isNewRecord ? 1 : $model->status; ?>

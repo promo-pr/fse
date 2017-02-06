@@ -38,6 +38,7 @@ return [
                     ],
                 ],
                 '' => 'site/default/index',
+                'search' => 'site/default/search',
                 'contact' => 'site/contact/index',
                 '<slug:[\w\-]+>' => 'page/node/view',
                 '<_m:[\w\-]+>/<_a:[\w-]+>' => '<_m>/default/<_a>',

@@ -16,6 +16,7 @@ class m160611_134542_create_page_table extends Migration
 
         $this->createTable('{{%page}}', [
             'id' => $this->primaryKey(),
+            'category_id' => $this->integer(),
             'title' => $this->string()->notNull(),
             'body' => $this->text(),
             'slug' => $this->string(),
@@ -28,10 +29,20 @@ class m160611_134542_create_page_table extends Migration
         ], $tableOptions);
 
         $this->createIndex('idx-page-slug', '{{%page}}', 'slug');
+
+      $this->createTable('{{%page_category}}', [
+        'id' => $this->primaryKey(),
+        'title' => $this->string()->notNull(),
+        'body' => $this->text(),
+        'slug' => $this->string(),
+      ], $tableOptions);
+
+        $this->createIndex('idx-page-category-slug', '{{%page_category}}', 'slug');
     }
 
     public function down()
     {
         $this->dropTable('{{%page}}');
+        $this->dropTable('{{%page_category}}');
     }
 }

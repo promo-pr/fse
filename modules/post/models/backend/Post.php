@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\page\models\backend;
+namespace app\modules\post\models\backend;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -9,10 +9,9 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "page".
+ * This is the model class for table "post".
  *
  * @property integer $id
- * @property integer $category_id
  * @property string $title
  * @property string $body
  * @property string $slug
@@ -24,7 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $status
  * @property integer $image
  */
-class Page extends ActiveRecord
+class Post extends ActiveRecord
 {
     const STATUS_ACTIVE = 1;
     const STATUS_WAIT = 0;
@@ -51,7 +50,7 @@ class Page extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'page';
+        return 'post';
     }
 
     /**
@@ -62,7 +61,7 @@ class Page extends ActiveRecord
         return [
             [['title'], 'required'],
             [['body', 'description'], 'string'],
-            [['status', 'category_id'], 'integer'],
+            [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'slug', 'seotitle', 'keywords'], 'string', 'max' => 255],
         ];
@@ -75,7 +74,6 @@ class Page extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category_id' => 'Раздел сайта',
             'title' => 'Заголовок',
             'body' => 'Содержимое',
             'slug' => 'ЧПУ / URL',
@@ -104,11 +102,6 @@ class Page extends ActiveRecord
             self::STATUS_ACTIVE => 'Опубликовано',
             self::STATUS_WAIT => 'Черновик',
         ];
-    }
-
-    public function getCategory()
-    {
-        return $this->hasOne(PageCategory::className(), ['id' => 'category_id']);
     }
     
 }
