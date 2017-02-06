@@ -15,7 +15,7 @@ use yii\helpers\Url;
 ?>
 
 <?php $form = ActiveForm::begin([
-    'options'=>['enctype'=>'multipart/form-data'] // important
+    'options'=>['enctype'=>'multipart/form-data']
 ]); ?>
 <div class="row">
     <div class="col-xs-6 col-md-8">
