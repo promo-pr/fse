@@ -2,6 +2,7 @@
 
 namespace app\modules\page\controllers\frontend;
 
+use app\modules\page\models\backend\PageCategory;
 use Yii;
 use yii\web\Controller;
 use app\modules\page\models\backend\Page;
@@ -9,7 +10,7 @@ use yii\web\NotFoundHttpException;
 
 class NodeController extends Controller
 {
-    public function actionView($slug)
+    public function actionView($category_slug, $slug)
     {
         $model = $this->findModelBySlug($slug);
         
@@ -31,6 +32,22 @@ class NodeController extends Controller
         ]);
     }
 
+  public function actionCategory($category_slug)
+  {
+    $model = $this->findModelCategory($category_slug);
+
+    $this->actionParams = [
+      'node' => 'category-' . $model->id,
+    ];
+
+    $pages = $model->getPages();
+
+    return $this->render('category', [
+      'model' => $model,
+      'pages' => $pages
+    ]);
+  }
+
     protected function findModelBySlug($slug)
     {
         if (($model = Page::findOne(['slug' => $slug])) !== null) {
@@ -39,5 +56,14 @@ class NodeController extends Controller
             throw new NotFoundHttpException('Страница не найдена');
         }
     }
+
+  protected function findModelCategory($category_slug)
+  {
+    if (($model = PageCategory::findOne(['slug' => $category_slug])) !== null) {
+      return $model;
+    } else {
+      throw new NotFoundHttpException('Страница не найдена');
+    }
+  }
 
 }

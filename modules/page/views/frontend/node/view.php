@@ -1,11 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use app\modules\admin\rbac\Rbac as AdminRbac;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\page\models\backend\Page */
 
+$this->params['breadcrumbs'][] = ['label' => $model->category->title, 'url' => ['/'.$model->category->slug]];
 $this->params['breadcrumbs'][] = $model->title;
 ?>
 

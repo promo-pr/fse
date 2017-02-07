@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function ($model, $key, $index, $column) {
                     /** @var \app\modules\page\models\backend\Page $model */
-                    return Html::a(Html::encode($model->title), ['/page/node/view', 'slug' => $model->slug]);
+                    return Html::a(Html::encode($model->title), ['/page/node/view', 'category_slug' => $model->category->slug, 'slug' => $model->slug]);
                 }
             ],
             [
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
                         /** @var \app\modules\page\models\backend\Page $model */
-                        return Html::a('<i class="material-icons">visibility</i>', ['/page/node/view', 'slug' => $model->slug]);
+                        return Html::a('<i class="material-icons">visibility</i>', ['/page/node/view', 'category_slug' => $model->category->slug, 'slug' => $model->slug]);
                     },
                 ],
             ],
