@@ -40,7 +40,7 @@ class NodeController extends Controller
       'node' => 'category-' . $model->id,
     ];
 
-    $pages = $model->getPages();
+    $pages = $model->pages;
 
     return $this->render('category', [
       'model' => $model,
