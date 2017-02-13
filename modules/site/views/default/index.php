@@ -79,7 +79,7 @@ $this->title = Yii::$app->name;
                 </div>
                 <div class="download">
                     <img src="/img/spr.jpg" alt="Справочник">
-                    <a href="#" target="_blank">СКАЧАТЬ</a>
+                    <a href="/doc/SudExpert_a4_2016.pdf" target="_blank">ОТКРЫТЬ</a>
                 </div>
             </div>
         </div>

@@ -1,29 +1,31 @@
 <?php
 
 return [
-    'adminEmail' => '',
-    'itemsMenu' => [
-        ['label' => 'О СОЮЗЕ',
-            'items' => [
-                ['label' => 'Основы деятельности', 'url' => ['/page/node/view', 'slug'=>'about']],
-                ['label' => 'Органы управления', 'url' => ['/page/node/view', 'slug'=>'control']],
-            ],
-        ],
-        ['label' => 'УСЛУГИ',
-            'items' => [
-                ['label' => 'Финансово-экономическая экспертиза', 'url' => ['/page/node/view', 'slug'=>'service']],
-                ['label' => 'Строительно-техническая экспертиза', 'url' => ['/page/node/view', 'slug'=>'service']],
-                ['label' => 'Стоимостная экспертиза', 'url' => ['/page/node/view', 'slug'=>'service']],
-                ['label' => 'Правовая экспертиза', 'url' => ['/page/node/view', 'slug'=>'service']],
-            ],
-        ],
-        ['label' => 'ДОКУМЕНТЫ',
-            'items' => [
-                ['label' => 'Библиотека', 'url' => ['/page/node/view', 'slug'=>'docs']],
-                ['label' => 'Документы общества', 'url' => ['/page/node/view', 'slug'=>'docs']],
-                ['label' => 'Федеральные нормативные акты', 'url' => ['/page/node/view', 'slug'=>'docs']],
-            ],
-        ],
-        ['label' => 'КОНТАКТЫ', 'url' => ['/site/contact/index']],
+  'adminEmail' => '',
+  'itemsMenu' => [
+    ['label' => 'О СОЮЗЕ',
+      'items' => [
+        ['label' => 'Основы деятельности', 'url' => ['/page/node/view', 'category_slug'=>'about', 'slug'=>'o_sojuze']],
+        ['label' => 'Органы управления', 'url' => ['/page/node/view', 'category_slug'=>'about', 'slug'=>'control']],
+      ],
     ],
+    ['label' => 'ДОКУМЕНТЫ',
+      'items' => [
+        ['label' => 'Библиотека', 'url' => ['/page/node/view', 'category_slug'=>'docs', 'slug'=>'library']],
+        ['label' => 'Документы союза', 'url' => ['/page/node/view', 'category_slug'=>'docs', 'slug'=>'main']],
+        ['label' => 'Федеральные нормативные акты', 'url' => ['/page/node/view', 'category_slug'=>'docs', 'slug'=>'regulation']],
+      ],
+    ],
+    ['label' => 'КОНТАКТЫ', 'url' => ['/site/contact/index']],
+    ['label' => 'МЕРОПРИЯТИЯ', 'url' => ['/site/contact/index']],
+    ['label' => 'ЧЛЕНСТВО В СОЮЗЕ', 'url' => ['/site/contact/index']],
+    ['label' => 'ЭКСПЕРТИЗА',
+      'items' => [
+        ['label' => 'Финансово-экономическая', 'url' => ['/page/node/view', 'category_slug'=>'service']],
+        ['label' => 'Строительно-техническая', 'url' => ['/page/node/view', 'category_slug'=>'service']],
+        ['label' => 'Стоимостная', 'url' => ['/page/node/view', 'slug'=>'category_service']],
+        ['label' => 'Правовая', 'url' => ['/page/node/view', 'slug'=>'category_service']],
+      ],
+    ],
+  ],
 ];
