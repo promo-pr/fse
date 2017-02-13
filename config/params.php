@@ -16,9 +16,6 @@ return [
         ['label' => 'Федеральные нормативные акты', 'url' => ['/page/node/view', 'category_slug'=>'docs', 'slug'=>'regulation']],
       ],
     ],
-    ['label' => 'КОНТАКТЫ', 'url' => ['/site/contact/index']],
-    ['label' => 'МЕРОПРИЯТИЯ', 'url' => ['/site/contact/index']],
-    ['label' => 'ЧЛЕНСТВО В СОЮЗЕ', 'url' => ['/site/contact/index']],
     ['label' => 'ЭКСПЕРТИЗА',
       'items' => [
         ['label' => 'Финансово-экономическая', 'url' => ['/page/node/view', 'category_slug'=>'service']],
@@ -27,5 +24,8 @@ return [
         ['label' => 'Правовая', 'url' => ['/page/node/view', 'slug'=>'category_service']],
       ],
     ],
+    ['label' => 'МЕРОПРИЯТИЯ', 'url' => ['/site/contact/index']],
+    ['label' => 'ЧЛЕНСТВО В СОЮЗЕ', 'url' => ['/site/contact/index']],
+    ['label' => 'КОНТАКТЫ', 'url' => ['/site/contact/index']],
   ],
 ];
