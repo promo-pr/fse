@@ -6,7 +6,7 @@ $params = ArrayHelper::merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
-
+//1
 return [
     'name' => 'FSE',
     'language' => 'ru_RU',
