@@ -2,6 +2,7 @@
 
 namespace app\modules\page\controllers\backend;
 
+use app\modules\page\models\backend\PageCategory;
 use Yii;
 use app\modules\page\models\backend\Page;
 use app\modules\page\models\backend\search\PageSearch;
@@ -83,6 +84,20 @@ class DefaultController extends Controller
         }
     }
 
+  public function actionUpdateCategory($id)
+  {
+    $this->layout = '@app/views/layouts/admin';
+    $model = $this->findModelCategory($id);
+
+    if ($model->load(Yii::$app->request->post()) && $model->save()) {
+      return $this->redirect(['/page/node/category', 'category_slug' => $model->slug]);
+    } else {
+      return $this->render('updatecategory', [
+        'model' => $model,
+      ]);
+    }
+  }
+
     /**
      * Deletes an existing Page model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -111,4 +126,13 @@ class DefaultController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+  protected function findModelCategory($id)
+  {
+    if (($model = PageCategory::findOne($id)) !== null) {
+      return $model;
+    } else {
+      throw new NotFoundHttpException('The requested page does not exist.');
+    }
+  }
 }

@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $model->title;
 
 <?php $this->beginBlock('title');
 echo Yii::$app->user->isGuest ?
-  false : Html::a('<i class="material-icons">mode_edit</i>', ['/admin/pages/default/update', 'id' => $model->id]);
+  false : Html::a('<i class="material-icons">mode_edit</i>', ['/admin/pages/default/update-category', 'id' => $model->id]);
 echo Html::encode($model->title);
 $this->endBlock(); ?>
 

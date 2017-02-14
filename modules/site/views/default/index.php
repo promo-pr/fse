@@ -170,7 +170,7 @@ $this->title = Yii::$app->name;
 <div class="prefooter bg-overlay text-center">
     <div class="container">
         <div class="logo-prefooter"></div>
-        <a href="/condition" class="btn btn-warning btn-shadow">УСЛОВИЯ ВСТУПЛЕНИЯ <span class="hidden-xs"> В СОЮЗ ФИНАНСОВО-ЭКОНОМИЧЕСКИХ СУДЕБНЫХ ЭКСПЕРТОВ</span></a>
+        <a href="/join" class="btn btn-warning btn-shadow">УСЛОВИЯ ВСТУПЛЕНИЯ <span class="hidden-xs"> В СОЮЗ ФИНАНСОВО-ЭКОНОМИЧЕСКИХ СУДЕБНЫХ ЭКСПЕРТОВ</span></a>
     </div>
 </div>
 
