@@ -6,7 +6,7 @@ $params = ArrayHelper::merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
-
+//1
 return [
     'name' => 'FSE',
     'language' => 'ru_RU',
@@ -41,6 +41,8 @@ return [
                 'contact' => 'site/contact/index',
                 '<_a:(error|search)>' => 'site/default/<_a>',
                 '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset)>' => 'user/default/<_a>',
+                'news/<slug:[\w\-]+>' => 'post/node/view',
+                'event/<slug:[\w\-]+>' => 'event/node/view',
                 '<category_slug:[\w\-]+>' => 'page/node/category',
                 '<category_slug:[\w\-]+>/<slug:[\w\-]+>' => 'page/node/view',
                 '<_m:[\w\-]+>/<_a:[\w-]+>' => '<_m>/default/<_a>',

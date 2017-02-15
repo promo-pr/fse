@@ -12,6 +12,18 @@ $config = [
                     'controllerNamespace' => 'app\modules\page\controllers\backend',
                     'viewPath' => '@app/modules/page/views/backend',
                 ],
+                //модуль новости
+                'posts' => [
+                    'class' => 'app\modules\post\Module',
+                    'controllerNamespace' => 'app\modules\post\controllers\backend',
+                    'viewPath' => '@app/modules/post/views/backend',
+                ],
+                //модуль мероприятия
+                'events' => [
+                    'class' => 'app\modules\event\Module',
+                    'controllerNamespace' => 'app\modules\event\controllers\backend',
+                    'viewPath' => '@app/modules/event/views/backend',
+                ],
             ],
         ],
         'file' => [
@@ -21,6 +33,18 @@ $config = [
             'class' => 'app\modules\page\Module',
             'controllerNamespace' => 'app\modules\page\controllers\frontend',
             'viewPath' => '@app/modules/page/views/frontend',
+        ],
+        //модуль новости
+        'post' => [
+            'class' => 'app\modules\post\Module',
+            'controllerNamespace' => 'app\modules\post\controllers\frontend',
+            'viewPath' => '@app/modules/post/views/frontend',
+        ],
+        //модуль мероприятия
+        'event' => [
+            'class' => 'app\modules\event\Module',
+            'controllerNamespace' => 'app\modules\event\controllers\frontend',
+            'viewPath' => '@app/modules/event/views/frontend',
         ],
         'site' => [
             'class' => 'app\modules\site\Module',

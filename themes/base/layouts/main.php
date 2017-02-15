@@ -74,6 +74,15 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
                     'items' => Yii::$app->params['itemsMenu'],
                 ]); ?>
 
+                <?= isset($this->blocks['news']) ?
+                    $this->blocks['news'] :
+                    false
+                ?>
+
+                <?= isset($this->blocks['event']) ?
+                    $this->blocks['event'] :
+                    false
+                ?>
             </div>
             <div class="col-lg-9">
                 <?= $content ?>
