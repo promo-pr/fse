@@ -61,6 +61,7 @@ $this->endBlock(); ?>
 </div>
 
 <?php $this->beginBlock('news');
+echo "<h4>Последние новости</h4>";
 echo \yii\widgets\ListView::widget([
     'dataProvider' => $dataPage,
     'itemView' => '_post',
