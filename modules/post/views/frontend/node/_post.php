@@ -28,6 +28,7 @@ $images = $model->getAttachFiles('image',150,150,1);
     ?>
     <div class="media-body ">
         <h6 class="media-heading"><?= Html::a($model->title, ['/post/node/view', 'slug'=>$model->slug]) ?></h6>
+        <?= '<i class="material-icons">event</i>&nbsp;'.date('j.m.Y',$model->created_at) . '&nbsp;&nbsp;&nbsp;' ?>
        <smail style="font-size: 12px; line-height:0.1"> <?= substr(strip_tags($model->body),0,400); ?></smail>
         <?= Html::a('<span class="more"></span>', ['/post/node/view', 'slug'=>$model->slug]) ?>
     </div>
