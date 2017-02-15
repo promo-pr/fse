@@ -39,8 +39,8 @@ use yii\helpers\Url;
         'minHeight' => 200,
         'toolbarFixedTopOffset' => 28,
         'formatting' => ['blockquote', 'h2', 'h3', 'h4', 'h5'],
-        'fileUpload' => Url::to(['/admin/files/upload/file']),
-        'imageUpload' => Url::to(['/admin/files/upload/image']),
+        'fileUpload' => Url::to(['/file/upload/file']),
+        'imageUpload' => Url::to(['/file/upload/image']),
         'imageFloatMargin' => '15px',
         'plugins' => [
             'fontcolor',
