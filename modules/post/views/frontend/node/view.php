@@ -15,7 +15,7 @@ $images = $model->getAttachFiles('image');
 $dataPage = new ActiveDataProvider([
     'query' => Post::find()->where(['status'=>1])->orderBy('updated_at DESC'),
     'pagination' => [
-        'pageSize' => 10,
+        'pageSize' => 2,
     ],
 ]);
 ?>
@@ -27,12 +27,18 @@ echo Html::encode($model->title);
 $this->endBlock(); ?>
 
 <div class="container post-body" >
-    <?php foreach ($images as $image) {
-        echo '<h2 class="post_title">'.$model->title.'</h2>';
-    } ?>
+
     <div class="col-xs-12">
     <div class="field-body">
-
+        <?php
+        foreach ($images as $image) {
+            echo Html::img($image->thumb, [
+                'alt' => $image->name,
+                'class' => 'media-object pull-left media-left image-item',
+                'style'=>'margin:auto',
+            ]);
+        }
+        ?>
         <?= $model->body ?>
     </div>
     <div class="flipper row text-center">

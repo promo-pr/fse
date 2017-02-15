@@ -27,10 +27,10 @@ echo Html::encode($model->title);
 $this->endBlock(); ?>
 
 <div class="container event-body" >
-    <?php foreach ($images as $image) {
-        echo '<h2 class="event_title">'.$model->title.'</h2>';
-    } ?>
     <div class="col-xs-12">
+     <div class="field-date-event">
+         <h3 class="event_date"> Дата начала мероприятия: <?= date('d.m.Y в H:i',$model->date) ?></h3>
+     </div>
     <div class="field-body">
 
         <?= $model->body ?>
