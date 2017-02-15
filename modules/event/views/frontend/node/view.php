@@ -15,7 +15,7 @@ $images = $model->getAttachFiles('image');
 $dataPage = new ActiveDataProvider([
     'query' => Event::find()->where(['status'=>1])->orderBy('updated_at DESC'),
     'pagination' => [
-        'pageSize' => 10,
+        'pageSize' => 2,
     ],
 ]);
 ?>
