@@ -47,7 +47,6 @@ return [
                 '<category_slug:[\w\-]+>/<slug:[\w\-]+>' => 'page/node/view',
                 '<_m:[\w\-]+>/<_a:[\w-]+>' => '<_m>/default/<_a>',
                 '<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w-]+>' => '<_m>/<_c>/<_a>',
-
             ],
         ],
         'formatter' => [
