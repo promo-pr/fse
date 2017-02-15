@@ -73,7 +73,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
                     'activateParents' => true,
                     'items' => Yii::$app->params['itemsMenu'],
                 ]); ?>
-
+                <?= isset($this->blocks['news']) ?
+                    $this->blocks['news'] :
+                    false
+                ?>
             </div>
             <div class="col-lg-9">
                 <?= $content ?>
