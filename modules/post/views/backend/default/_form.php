@@ -76,7 +76,7 @@ use yii\helpers\Url;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
 </div>
-
+<div class="btn-toolbar">
 <?= Html::submitButton('<i class="material-icons">check</i> Сохранить', ['class' => 'btn btn-success']) ?>
 <?= $model->isNewRecord ? false : Html::a('<i class="material-icons">delete</i> Удалить', ['delete', 'id'=>$model->id], [
     'class' => 'btn btn-danger',
@@ -84,7 +84,7 @@ use yii\helpers\Url;
         'confirm' => "Эта операция не может быть отменена. Продолжить?",
     ]]) ?>
 <?= Html::a('Отмена', Yii::$app->request->referrer, ['class' => 'btn btn-default']) ?>
-
+</div>
 
 
 <?php ActiveForm::end(); ?>
