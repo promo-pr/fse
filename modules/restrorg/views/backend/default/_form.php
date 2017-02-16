@@ -8,7 +8,7 @@ use app\widgets\date\Picker;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\post\models\backend\Post */
+/* @var $model app\modules\restrorg\models\backend\Restrorg */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
@@ -18,7 +18,7 @@ use yii\helpers\Url;
 ]); ?>
 <div class="row">
     <div class="col-xs-9 col-md-10">
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-xs-3 col-md-2">
         <?php $model->status = $model->isNewRecord ? 1 : $model->status; ?>
@@ -29,53 +29,41 @@ use yii\helpers\Url;
     </div>
 </div>
 
-<div class="form-group field-post-image">
-    <?= $form->field($model, 'image[]')->widget(FileInput::className(), ['multiple'=>true]); ?>
+    <div class="row" style="clear: both">
+        <div class="col-sm-6">
+            <?= $form->field($model, 'type_work')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-6">
+        <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+<div class="row" style="clear: both">
+    <div class="col-sm-4">
+    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'mail')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'site')->textInput(['maxlength' => true]) ?>
+    </div>
+
 </div>
-
-<?= $form->field($model, 'body')->widget(Widget::className(), [
-    'settings' => [
-        'lang' => 'ru',
-        'minHeight' => 200,
-        'toolbarFixedTopOffset' => 28,
-        'formatting' => ['blockquote', 'h2', 'h3', 'h4', 'h5'],
-        'fileUpload' => Url::to(['/file/upload/file']),
-        'imageUpload' => Url::to(['/file/upload/image']),
-        'imageFloatMargin' => '15px',
-        'plugins' => [
-            'fontcolor',
-            'table',
-            'video',
-            'fullscreen'
-        ]
-    ]
-]); ?>
-
 <div class="pull-right">
     <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseSEO" aria-expanded="false" aria-controls="collapseSEO">
-        <i class="material-icons">settings</i> Поисковая оптимизация
+        <i class="material-icons">settings</i>
     </a>
 </div>
 
 <div class="collapse" id="collapseSEO">
-
     <div class="row" style="clear: both">
-        <div class="col-sm-<?= $model->isNewRecord ? 6 : 4 ?>">
-            <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-<?= $model->isNewRecord ? 6 : 5 ?>">
-            <?= $form->field($model, 'seotitle')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-3">
-            <?= $model->isNewRecord ? false : $form->field($model, 'created_at')->widget(Picker::classname()); ?>
-        </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
     </div>
-
-    <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
+        </div>
 </div>
+
+
 <div class="btn-toolbar">
 <?= Html::submitButton('<i class="material-icons">check</i> Сохранить', ['class' => 'btn btn-success']) ?>
 <?= $model->isNewRecord ? false : Html::a('<i class="material-icons">delete</i> Удалить', ['delete', 'id'=>$model->id], [

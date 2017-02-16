@@ -14,6 +14,8 @@ use promo\admin\AdminMenu;
             ['label' => 'Страницы' . Html::a(Icon::name('add_circle_outline'), ['/admin/pages/default/create']), 'url' => ['/admin/pages/default/index']],
             ['label' => 'Новости'. Html::a(Icon::name('add_circle_outline'), ['/admin/posts/default/create']), 'url' => ['/admin/posts/default/index']],
             ['label' => 'Мероприятия'. Html::a(Icon::name('add_circle_outline'), ['/admin/events/default/create']), 'url' => ['/admin/events/default/index']],
+            ['label' => 'Организации'. Html::a(Icon::name('add_circle_outline'), ['/admin/restrorgs/default/create']), 'url' => ['/admin/restrorgs/default/index']],
+            ['label' => 'Эксперты'. Html::a(Icon::name('add_circle_outline'), ['/admin/experts/default/create']), 'url' => ['/admin/experts/default/index']],
         ]],
     ],
     'itemsRight' => [

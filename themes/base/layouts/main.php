@@ -79,8 +79,8 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
                     false
                 ?>
 
-                <?= isset($this->blocks['event']) ?
-                    $this->blocks['event'] :
+                <?= isset($this->blocks['evens']) ?
+                    $this->blocks['evens'] :
                     false
                 ?>
             </div>
