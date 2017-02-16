@@ -1,11 +1,36 @@
 <?php
 
 use yii\helpers\Html;
+use yii\data\ActiveDataProvider;
+use app\modules\post\models\backend\Post;
+use yii\widgets\LinkPager;
+
 
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
+$dataPageMain = new ActiveDataProvider([
+    'query' => Post::find()->where(['status'=>1])->orderBy('updated_at DESC'),
+    'pagination' => [
+        'pageSize' => 2,
+    ],
+]);
 ?>
+<div class="block news-block">
+    <div class="container">
+            <h3 class="text-center">Новости</h3>
+            <?= \yii\widgets\ListView::widget([
+            'dataProvider' => $dataPageMain,
+            'itemView' => '_main_news',
+            'layout' => "{items}", //"{summary}\n{items}\n{pager}"
+            'options' => [
+            'class' => 'row',
+            ]
+            ]);?>
+        <?=Html::a('<div class="col-md-2 bg-primary">Посмотреть все новости</div>', ['/site/default/news']) ?>
+
+    </div>
+</div>
 
 
 <div class="block search-block gray">

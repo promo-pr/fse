@@ -10,6 +10,9 @@ use yii\widgets\LinkPager;
 /* @var $model app\modules\event\models\backend\Event */
 /* @var $attach_image */
 
+$this->params['breadcrumbs'][] = ['label' => 'Мероприятия', 'url' => ['/site/default/event']];
+$this->params['breadcrumbs'][] = $model->title;
+
 $images = $model->getAttachFiles('image');
 
 $dataPage = new ActiveDataProvider([
