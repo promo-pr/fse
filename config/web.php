@@ -24,6 +24,18 @@ $config = [
                     'controllerNamespace' => 'app\modules\event\controllers\backend',
                     'viewPath' => '@app/modules/event/views/backend',
                 ],
+                //модуль реестр организации
+                'restrorgs' => [
+                    'class' => 'app\modules\restrorg\Module',
+                    'controllerNamespace' => 'app\modules\restrorg\controllers\backend',
+                    'viewPath' => '@app/modules/restrorg/views/backend',
+                ],
+                //модуль реестр экспертов
+                'experts' => [
+                    'class' => 'app\modules\experts\Module',
+                    'controllerNamespace' => 'app\modules\experts\controllers\backend',
+                    'viewPath' => '@app/modules/experts/views/backend',
+                ],
             ],
         ],
         'file' => [
@@ -45,6 +57,18 @@ $config = [
             'class' => 'app\modules\event\Module',
             'controllerNamespace' => 'app\modules\event\controllers\frontend',
             'viewPath' => '@app/modules/event/views/frontend',
+        ],
+        //модуль реестр организации
+        'restrorg' => [
+            'class' => 'app\modules\restrorg\Module',
+            'controllerNamespace' => 'app\modules\restrorg\controllers\frontend',
+            'viewPath' => '@app/modules/restrorg/views/frontend',
+        ],
+        //модуль реестр эксперты
+        'expert' => [
+            'class' => 'app\modules\experts\Module',
+            'controllerNamespace' => 'app\modules\experts\controllers\frontend',
+            'viewPath' => '@app/modules/experts/views/frontend',
         ],
         'site' => [
             'class' => 'app\modules\site\Module',

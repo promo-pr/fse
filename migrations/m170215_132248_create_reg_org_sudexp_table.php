@@ -25,6 +25,10 @@ class m170215_132248_create_reg_org_sudexp_table extends Migration
             'phone' => $this->string(),
             'mail' => $this->string(),
             'site' => $this->string(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer(),
+            'status' => $this->smallInteger()->notNull()->defaultValue(1),
+            'slug' => $this->string(),
         ], $tableOptions);
         $this->createIndex('idx-reg_org_sudexp-name', '{{%reg_org_sudexp}}', 'name');
     }
