@@ -24,3 +24,4 @@ $images = $model->getAttachFiles('image',64,64,1);
         <?= Html::a('<span class="more"></span>', ['/event/node/view', 'slug'=>$model->slug]) ?>
     </div>
 </div>
+

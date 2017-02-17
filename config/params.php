@@ -24,7 +24,7 @@ return [
         ['label' => 'Правовая', 'url' => ['/page/node/view', 'slug'=>'category_service']],
       ],
     ],
-    ['label' => 'МЕРОПРИЯТИЯ', 'url' => ['/site/contact/index']],
+    ['label' => 'МЕРОПРИЯТИЯ', 'url' => ['/site/default/event']],
     ['label' => 'ЧЛЕНСТВО В СОЮЗЕ', 'url' => ['/page/node/category', 'category_slug'=>'join']],
     ['label' => 'КОНТАКТЫ', 'url' => ['/site/contact/index']],
   ],

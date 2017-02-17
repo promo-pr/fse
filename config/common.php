@@ -39,6 +39,8 @@ return [
                 ],
                 '' => 'site/default/index',
                 'contact' => 'site/contact/index',
+                'news' => 'site/default/news',
+                'event' => 'site/default/event',
                 '<_a:(error|search)>' => 'site/default/<_a>',
                 '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset)>' => 'user/default/<_a>',
                 'news/<slug:[\w\-]+>' => 'post/node/view',

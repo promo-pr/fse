@@ -10,14 +10,17 @@ use yii\widgets\LinkPager;
 /* @var $model app\modules\post\models\backend\Post */
 /* @var $attach_image */
 
-$images = $model->getAttachFiles('image');
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['/news']];
+$this->params['breadcrumbs'][] = $model->title;
 
+$images = $model->getAttachFiles('image');
 $dataPage = new ActiveDataProvider([
     'query' => Post::find()->where(['status'=>1])->orderBy('updated_at DESC'),
     'pagination' => [
         'pageSize' => 2,
     ],
 ]);
+
 ?>
 
 <?php $this->beginBlock('title');

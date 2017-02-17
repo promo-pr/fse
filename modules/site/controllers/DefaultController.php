@@ -42,4 +42,14 @@ class DefaultController extends Controller
         }
     }
 
+    public function actionEvent()
+    {
+        return $this->render('event');
+    }
+
+    public function actionNews()
+    {$this->layout = "@app/themes/base/layouts/main";
+        return $this->render('news');
+    }
+
 }
