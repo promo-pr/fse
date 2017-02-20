@@ -12,6 +12,11 @@ $config = [
                     'controllerNamespace' => 'app\modules\page\controllers\backend',
                     'viewPath' => '@app/modules/page/views/backend',
                 ],
+                'files' => [
+                    'class' => 'app\modules\file\Module',
+                    'controllerNamespace' => 'app\modules\file\controllers\backend',
+                    'viewPath' => '@app/modules/file/views/backend',
+                ],
                 //модуль новости
                 'posts' => [
                     'class' => 'app\modules\post\Module',
@@ -40,6 +45,7 @@ $config = [
         ],
         'file' => [
             'class' => 'app\modules\file\Module',
+            'controllerNamespace' => 'app\modules\file\controllers\frontend',
         ],
         'page' => [
             'class' => 'app\modules\page\Module',

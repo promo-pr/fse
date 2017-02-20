@@ -21,7 +21,7 @@ use yii\helpers\Html;
     <div class="media-body ">
         <h6 class="media-heading"><?= Html::a($model->fio, ['/experts/node/view', 'slug'=>$model->slug]) ?></h6>
         <?= '<i class="material-icons">event</i>&nbsp;'.date('j.m.Y',$model->created_at) . '&nbsp;&nbsp;&nbsp;' ?>
-       <smail style="font-size: 12px; line-height:0.1"> </smail>
+       <smail> </smail>
         <?= Html::a('<span class="more"></span>', ['/experts/node/view', 'slug'=>$model->slug]) ?>
     </div>
 </div>

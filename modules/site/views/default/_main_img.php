@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use app\modules\file\FilesBehavior;
 /* @var $attach_image */
 
-$images = $model->getAttachFiles('image',250,350,1);
+$images = $model->getAttachFiles('image');
 ?>
 
 
@@ -12,10 +12,10 @@ $images = $model->getAttachFiles('image',250,350,1);
             <?php
 
             foreach ($images as $image) {
-           echo  Html::img($image->thumb, [
+           echo  Html::img($image->getThumb(250,350), [
                     'alt' => $image->name,
                   //'class' => 'media-object pull-left media-left image-item',
-                    'style'=>'width: 250px; height: 350px;',
+                    'style'=>'',
                 ]);
             }
 
