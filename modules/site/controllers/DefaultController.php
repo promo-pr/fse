@@ -30,8 +30,8 @@ class DefaultController extends Controller
 
         if ($post) {
             $search = new Search();
+            $return_json = $search->find()->filterWhere(['like', 'fio', $post['fio']])->andfilterWhere(['like', 'types_work', $post['types_work']])->andfilterWhere(['=', 'county', $post['county']])->all();
 
-            $return_json = $search->find()->where(['like', 'name', $post['name']])->all();
 
             \Yii::$app->response->format = Response::FORMAT_JSON;
 
@@ -40,6 +40,7 @@ class DefaultController extends Controller
         } else {
             throw new NotFoundHttpException('Страница не найдена.');
         }
+
     }
 
     public function actionEvent()

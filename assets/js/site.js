@@ -23,21 +23,25 @@
         $('#form-search').on('change keyup', function (form) {
 
             var name = $('#form-search-name').val();
-
+            var county = $('#form-search-country').val();
+            var types_work = $('#form-search-experts').val();
             if (name.length > 2) {
                 $.ajax({
                     type: "POST",
                     url: "/search",
                     data: {
-                        'name' : name
+                        'fio' : name,
+                        'county':county,
+                        'types_work':types_work
                     },
                     dataType: "json",
                     success: function(result){
                         var row = '';
                         $.each(result, function( i, obj ) {
                             row += '<tr>';
-                            row += '<td>' +  (i+1) + '</td>';
-                            row += '<td>' + obj.name + '</td>';
+                           // row += '<td>' +  (i+1) + '</td>';
+                            row += '<td class="name">' + obj.fio +'<span class="text-muted"> | '+ obj.region+'</span> </td>';
+                            row += '<td class="work_exp ">' + obj.work_exp + '</td>';
                             row += '</tr>';
                         });
 

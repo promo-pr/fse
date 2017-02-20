@@ -70,9 +70,9 @@ class Experts extends ActiveRecord
     {
         return [
             [['fio'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['types_work','created_at', 'updated_at'], 'safe'],
             [['status','county'], 'integer'],
-            [['adress', 'phone', 'slug','mail','types_work','site','post','company','region','work_exp'], 'string', 'max' => 255],
+            [['adress', 'phone', 'slug','mail','site','post','company','region','work_exp'], 'string', 'max' => 255],
         ];
     }
 

@@ -10,7 +10,7 @@ use yii\widgets\LinkPager;
 /* @var $model app\modules\restrorg\models\backend\Restrorg */
 /* @var $attach_image */
 
-$images = $model->getAttachFiles('image',200,350);
+$images = $model->getAttachFiles('image');
 
 $dataPage = new ActiveDataProvider([
     'query' => Restrorg::find()->where(['status'=>1])->orderBy('updated_at DESC'),
@@ -39,10 +39,10 @@ $this->endBlock(); ?>
         <div class="site"><h4 >Свидетельство: </h4>
         <?php
         foreach ($images as $image) {
-            echo Html::img($image->thumb, [
+            echo Html::img($image->getThumb(250,350), [
                 'alt' => $image->name,
                 'class' => 'media-object pull-left media-left image-item',
-                'style'=>'float:left; width:250px',
+
             ]);
         }
         ?></div>

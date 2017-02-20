@@ -35,10 +35,9 @@ $this->endBlock(); ?>
     <div class="field-body">
         <?php
         foreach ($images as $image) {
-            echo Html::img($image->thumb, [
+            echo Html::img($image->getThumb(150,150), [
                 'alt' => $image->name,
                 'class' => 'media-object pull-left media-left image-item',
-                'style'=>'margin:auto; width: 150px; height: 150px;',
             ]);
         }
         ?>

@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 /* @var $attach_image */
 
-$images = $model->getAttachFiles('image',100,100,1);
+$images = $model->getAttachFiles('image');
 ?>
 
 
@@ -11,10 +11,10 @@ $images = $model->getAttachFiles('image',100,100,1);
         <div >
             <?php
             foreach ($images as $image) {
-                echo Html::img($image->thumb, [
+                echo Html::img($image->getThumb(100,100), [
                     'alt' => $image->name,
                     'class' => 'media-object /pull-left media-left image-item',
-                    'style'=>'float:left; width:100px;width:100px',
+                    'style'=>'float:left; width:100px;height:100px',
                 ]);
             }
             ?>
@@ -26,7 +26,7 @@ $images = $model->getAttachFiles('image',100,100,1);
     </div>
 
     <div class="col-xs-12">
-        <smail> <?= substr(strip_tags($model->body),0,400); ?></smail>
+        <smail> <?= mb_substr(strip_tags($model->body),0,400); ?></smail>
     </div>
 
 

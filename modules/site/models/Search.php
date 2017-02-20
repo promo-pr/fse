@@ -9,7 +9,11 @@ use yii\db\ActiveRecord;
  * This is the model class for table "reestr".
  *
  * @property integer $id
- * @property string $name
+ * @property string $fio
+ * @property string $work_exp
+ * @property string $country
+ * @property string $region
+ * @property string types_work
  */
 class Search extends ActiveRecord
 {
@@ -19,7 +23,7 @@ class Search extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'reestr';
+        return 'Contact_experts';
     }
 
     /**
@@ -28,8 +32,9 @@ class Search extends ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 255],
+            [['fio'], 'required'],
+            [['fio','work_exp','region','types_work'], 'string', 'max' => 255],
+            [['country'], 'integer'],
         ];
     }
 
@@ -41,6 +46,10 @@ class Search extends ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'ФИО',
+            'work_exp'=>'Стаж',
+            'country'=>'Федеральный округ',
+            'region'=>'Регион',
+            'types_work'=>'Виды экспертиз',
         ];
     }
     

@@ -60,7 +60,19 @@ use yii\helpers\Url;
             <?= $form->field($model, 'post')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
-        <?= $form->field($model, 'types_work')->textInput(['maxlength' => true]) ?>
+        <?=
+//        $form->field($model, 'types_work')->textInput(['maxlength' => true])
+          $form->field($model, 'types_work[]')->dropDownList([
+              '1' => 'Финансово-экономические',
+              '2' => 'Строительно-технические',
+              '3,' => 'Оценочные экспертизы',
+              '4' => 'Оспаривание кадастровой стоимости',
+              '5' => 'Автотехнические',
+              '6' => 'Товароведческие',
+              '7' => 'Почерковедческие',
+              '8' => 'Рецензирование заключений экспертов',
+          ],['multiple' =>true]);
+        ?>
         </div>
         <div class="col-sm-12">
             <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>

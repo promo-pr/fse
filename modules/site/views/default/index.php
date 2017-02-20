@@ -60,31 +60,31 @@ $dataImg_org_Main = new ActiveDataProvider([
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <select class="form-control">
+                                <select id="form-search-experts"  class="form-control">
                                     <option value="" disabled selected="selected">Вид экспертизы</option>
-                                    <option>Финансово-экономические</option>
-                                    <option>Строительно-технические</option>
-                                    <option>Оценочные экспертизы</option>
-                                    <option>Оспаривание кадастровой стоимости</option>
-                                    <option>Автотехнические</option>
-                                    <option>Товароведческие</option>
-                                    <option>Почерковедческие</option>
-                                    <option>Рецензирование заключений экспертов</option>
+                                    <option value="1">Финансово-экономические</option>
+                                    <option value="2">Строительно-технические</option>
+                                    <option value="3">Оценочные экспертизы</option>
+                                    <option value="4">Оспаривание кадастровой стоимости</option>
+                                    <option value="5">Автотехнические</option>
+                                    <option value="6">Товароведческие</option>
+                                    <option value="7">Почерковедческие</option>
+                                    <option value="8">Рецензирование заключений экспертов</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <select class="form-control">
+                                <select id="form-search-country" class="form-control">
                                     <option value="" disabled selected="selected">Федеральный округ</option>
-                                    <option>Центральный</option>
-                                    <option>Северо-западный</option>
-                                    <option>Южный</option>
-                                    <option>Северо-кавказский</option>
-                                    <option>Приволжский</option>
-                                    <option>Уральский</option>
-                                    <option>Сибирский</option>
-                                    <option>Дальневосточный</option>
+                                    <option value="1">Центральный</option>
+                                    <option value="2">Северо-западный</option>
+                                    <option value="3">Южный</option>
+                                    <option value="4">Северо-кавказский</option>
+                                    <option value="5">Приволжский</option>
+                                    <option value="6">Уральский</option>
+                                    <option value="7">Сибирский</option>
+                                    <option value="8">Дальневосточный</option>
                                 </select>
                             </div>
                         </div>
@@ -117,8 +117,9 @@ $dataImg_org_Main = new ActiveDataProvider([
 <div class="block form-search-result-wrapper" style="display: none">
     <div class="container">
         <div class="block-title text-center">РЕЗУЛЬТАТЫ ПОИСКА</div>
+        <div class="pull-right"><a href="">Показать подробное описание</a>|<i class="material-icons">list</i></div>
         <table id="form-search-result" class="table table-hover">
-            <thead> <tr> <th>#</th> <th>ФИО</th> </tr> </thead>
+            <thead> <tr> <!--<th>#</th>--> <th>ФИО</th> <th>Стаж</th></tr> </thead>
             <tbody id="form-search-result-body"> </tbody>
         </table>
     </div>
