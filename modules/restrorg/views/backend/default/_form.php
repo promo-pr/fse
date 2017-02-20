@@ -29,6 +29,10 @@ use yii\helpers\Url;
     </div>
 </div>
 
+<div class="form-group field-post-image">
+    <?= $form->field($model, 'image')->widget(FileInput::className(), ['multiple'=>false]); ?>
+</div>
+
     <div class="row" style="clear: both">
         <div class="col-sm-6">
             <?= $form->field($model, 'type_work')->textInput(['maxlength' => true]) ?>
