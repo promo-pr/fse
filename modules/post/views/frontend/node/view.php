@@ -38,7 +38,7 @@ $this->endBlock(); ?>
             echo Html::img($image->thumb, [
                 'alt' => $image->name,
                 'class' => 'media-object pull-left media-left image-item',
-                'style'=>'margin:auto',
+                'style'=>'margin:auto; width: 150px; height: 150px;',
             ]);
         }
         ?>

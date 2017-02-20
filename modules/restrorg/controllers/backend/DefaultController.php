@@ -55,7 +55,7 @@ class DefaultController extends Controller
         $model = new Restrorg();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['/restorg/node/view', 'slug' => $model->slug]);
+            return $this->redirect(['/restrorg/node/view', 'slug' => $model->slug]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +75,7 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['/restorg/node/view', 'slug' => $model->slug]);
+            return $this->redirect(['/restrorg/node/view', 'slug' => $model->slug]);
         } else {
             return $this->render('update', [
                 'model' => $model,

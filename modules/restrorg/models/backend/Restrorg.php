@@ -23,6 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_at
  * @property integer $status
  * @property string $slug
+ * @property integer $image
  */
 class Restrorg extends ActiveRecord
 {
@@ -43,10 +44,10 @@ class Restrorg extends ActiveRecord
                 'immutable' => true,
                 'ensureUnique' => true,
             ],
-         /*   [
+           [
                 'class' => FilesBehavior::className(),
                 'attribute' => 'image',
-            ],*/
+            ],
         ];
     }
     
@@ -68,6 +69,7 @@ class Restrorg extends ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['status'], 'integer'],
             [['adress', 'phone', 'slug','mail','type_work','site'], 'string', 'max' => 255],
+            [['image'], 'file', 'maxFiles' => 1],
         ];
     }
 
@@ -88,6 +90,7 @@ class Restrorg extends ActiveRecord
             'updated_at' => 'Обновлено',
             'status' => 'Статус',
             'slug' => 'ЧПУ / URL',
+            'image' => 'Свидетельство',
         ];
     }
 

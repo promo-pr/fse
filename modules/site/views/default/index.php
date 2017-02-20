@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use app\modules\post\models\backend\Post;
+use app\modules\restrorg\models\backend\Restrorg;
 use yii\widgets\LinkPager;
 
 
@@ -15,10 +16,12 @@ $dataPageMain = new ActiveDataProvider([
         'pageSize' => 2,
     ],
 ]);
+$dataImg_org_Main = new ActiveDataProvider([
+    'query' => Restrorg::find()->where(['status'=>1])->orderBy('updated_at DESC'),
+]);
 ?>
 <div class="block news-block">
     <div class="container">
-            <h3 class="text-center">Новости</h3>
             <?= \yii\widgets\ListView::widget([
             'dataProvider' => $dataPageMain,
             'itemView' => '_main_news',
@@ -27,7 +30,7 @@ $dataPageMain = new ActiveDataProvider([
             'class' => 'row',
             ]
             ]);?>
-        <?=Html::a('<div class="col-md-2 bg-primary">Посмотреть все новости</div>', ['/site/default/news']) ?>
+        <?=Html::a('<div class="col-md-12 mute text-center"><u class="text-muted">Все новости</u></div>', ['/site/default/news']) ?>
 
     </div>
 </div>
@@ -136,7 +139,7 @@ $dataPageMain = new ActiveDataProvider([
                 <div class="bx-wrapper"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
             </div>
             <div class="col-sm-9">
-                <div id="slider1" class="slider">
+               <!-- <div id="slider1" class="slider">
                     <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
                     <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
                     <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
@@ -144,8 +147,22 @@ $dataPageMain = new ActiveDataProvider([
                     <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
                     <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
                     <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                </div>
+                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>-->
+                    <?= \yii\widgets\ListView::widget([
+                        'dataProvider' => $dataImg_org_Main,
+                        'itemView' => '_main_img',
+                        'layout' => "{items}", //"{summary}\n{items}\n{pager}"
+                        'itemOptions'=>[
+                            'tag'=>'div',
+                            'class'=>'slide',
+                    ],
+                        'options'=>[
+                            'tag'=>'div',
+                            'class'=>'slider',
+                            'id'=>'slider1',
+                        ],
+                    ]);?>
+            <!--    </div>-->
             </div>
         </div>
     </div>

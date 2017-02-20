@@ -140,7 +140,7 @@ class Files extends ActiveRecord
      * @param integer $height
      * @return string $src
      */
-    public function getThumb ($width=150, $height=150)
+    public function getThumb ($width='1200', $height='1200')
     {
         $public = Yii::getAlias('@webroot');
         $src = '/cache/' . $width . '_' . $height . $this->uri;
