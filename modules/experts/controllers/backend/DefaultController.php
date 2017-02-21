@@ -54,7 +54,9 @@ class DefaultController extends Controller
         $this->layout = '@app/views/layouts/admin';
         $model = new Experts();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->types_work = implode(",", $_POST['Experts']['types_work']);
+            $model->save();
             return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
         } else {
             return $this->render('create', [
@@ -73,9 +75,11 @@ class DefaultController extends Controller
     {
         $this->layout = '@app/views/layouts/admin';
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->types_work = implode(",", $_POST['Experts']['types_work']);
+            if ($model->save()) {
+                return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,

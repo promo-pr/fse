@@ -2,6 +2,12 @@
 
 namespace app\modules\site\controllers;
 
+use yii\data\ActiveDataProvider;
+use app\modules\restrorg\models\backend\Restrorg;
+use app\modules\post\models\backend\Post;
+use app\modules\experts\models\backend\ExpertsTypes;
+use app\modules\experts\models\backend\Experts;
+use yii\helpers\ArrayHelper;
 use app\modules\site\models\Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -21,8 +27,25 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $this->layout = "@app/themes/base/layouts/front";
-        return $this->render('index');
+        $dataImg_org_Main = new ActiveDataProvider([
+            'query' => Restrorg::find()->where(['status'=>1])->orderBy('updated_at DESC'),
+        ]);
+        $dataPageMain = new ActiveDataProvider([
+            'query' => Post::find()->where(['status'=>1])->orderBy('updated_at DESC'),
+            'pagination' => [
+                'pageSize' => 2,
+            ],
+        ]);
+        $dataTypesExpert =ExpertsTypes::find()->all();
+
+        return $this->render('index',[
+            'dataImg_org_Main'=>$dataImg_org_Main,
+            'dataPageMain'=>$dataPageMain,
+            'dataTypesExpert'=>$dataTypesExpert
+
+        ]);
     }
+
 
     public function actionSearch()
     {

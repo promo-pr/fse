@@ -4,6 +4,8 @@ use yii\helpers\Html;
 //use app\modules\admin\rbac\Rbac as AdminRbac;
 use yii\data\ActiveDataProvider;
 use app\modules\experts\models\backend\Experts;
+use yii\helpers\ArrayHelper;
+use app\modules\experts\models\backend\ExpertsTypes;
 use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
@@ -21,12 +23,14 @@ $country = [
     '7' => 'Приволжский',
     '8' => 'Северо-Кавказский',
 ];
+$types_expertize = ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name');
 $dataPage = new ActiveDataProvider([
     'query' => Experts::find()->where(['status'=>1])->orderBy('updated_at DESC'),
     'pagination' => [
         'pageSize' => 2,
     ],
 ]);
+$model->types_work=explode(",",$model->types_work);
 ?>
 
 <?php $this->beginBlock('title');
@@ -45,7 +49,11 @@ $this->endBlock(); ?>
         <div class="name"><h4>Регион: </h4><?= $model->region ?></div>
         <div class="name"><h4>Компания: </h4><?= $model->company ?></div>
         <div class="name"><h4>Должность: </h4><?= $model->post ?></div>
-        <div class="type_work"><h4>Виды экспертиз: </h4><?= $model->types_work ?></div>
+        <div class="type_work"><h4>Виды экспертиз: </h4>
+            <ul>
+            <?php foreach ($model->types_work as $item){echo '<li>'.$types_expertize[$item].'</li>';} ?>
+            </ul>
+        </div>
         <div class="adress"><h4>Адрес: </h4><?= $model->adress ?></div>
         <div class="phone"><h4>Контактный телефон: </h4><?= $model->phone ?></div>
         <div class="mail"><h4>E-mail: </h4><?= $model->mail ?></div>

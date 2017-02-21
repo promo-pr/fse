@@ -4,21 +4,14 @@ use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
 use app\modules\post\models\backend\Post;
 use app\modules\restrorg\models\backend\Restrorg;
+use app\modules\experts\models\backend\ExpertsTypes;
 use yii\widgets\LinkPager;
 
 
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
-$dataPageMain = new ActiveDataProvider([
-    'query' => Post::find()->where(['status'=>1])->orderBy('updated_at DESC'),
-    'pagination' => [
-        'pageSize' => 2,
-    ],
-]);
-$dataImg_org_Main = new ActiveDataProvider([
-    'query' => Restrorg::find()->where(['status'=>1])->orderBy('updated_at DESC'),
-]);
+
 ?>
 <div class="block news-block">
     <div class="container">
@@ -44,7 +37,7 @@ $dataImg_org_Main = new ActiveDataProvider([
                     Поиск экспертов по видам экспертиз
                 </div>
                 <ul class="spec-list bordered">
-                    <li><i class="material-icons">done</i><a href="#"> Финансово-экономические</a> <span class="badge">142</span></li>
+                    <!--<li><i class="material-icons">done</i><a href="#"> Финансово-экономические</a> <span class="badge">142</span></li>
                     <li><i class="material-icons">done</i><a href="#"> Строительно-технические</a> <span class="badge">112</span></li>
                     <li><i class="material-icons">done</i><a href="#"> Оценочные экспертизы</a> <span class="badge">123</span></li>
                     <li><i class="material-icons">done</i><a href="#"> Оспаривание кадастровой стоимости</a> <span class="badge">45</span></li>
@@ -52,6 +45,8 @@ $dataImg_org_Main = new ActiveDataProvider([
                     <li><i class="material-icons">done</i><a href="#"> Товароведческие</a> <span class="badge">34</span></li>
                     <li><i class="material-icons">done</i><a href="#"> Почерковедческие</a> <span class="badge">12</span></li>
                     <li><i class="material-icons">done</i><a href="#"> Рецензирование заключений экспертов</a> <span class="badge">27</span></li>
+                    -->
+                    <?php foreach ($dataTypesExpert as $item){echo '<li value="'.$item->id.'" class="types_work"><i class="material-icons">done</i><a>'.$item->name.'</a> <span class="badge">'.ExpertsTypes::getTypes_work($item->id).'</span></li>';}?>
                 </ul>
                 <div class="block-title text-center">
                     Расширенный поиск
