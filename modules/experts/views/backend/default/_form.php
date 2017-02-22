@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use app\modules\file\widgets\FileInput;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\modules\experts\models\backend\ExpertsTypes;
 use vova07\imperavi\Widget;
 use app\widgets\date\Picker;
 use yii\helpers\Url;
@@ -54,27 +56,17 @@ use yii\helpers\Url;
 
     <div class="row" style="clear: both">
         <div class="col-sm-4">
+            <?=//$form->field($model, 'types_work')->textInput(['maxlength' => true])
+            $form->field($model, 'types_work[]')->listBox(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['multiple' =>true,'size'=>'5']);
+            ?>
+        </div>
+        <div class="col-sm-4">
             <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'post')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-4">
-        <?=
-//        $form->field($model, 'types_work')->textInput(['maxlength' => true])
-          $form->field($model, 'types_work[]')->dropDownList([
-              '1' => 'Финансово-экономические',
-              '2' => 'Строительно-технические',
-              '3,' => 'Оценочные экспертизы',
-              '4' => 'Оспаривание кадастровой стоимости',
-              '5' => 'Автотехнические',
-              '6' => 'Товароведческие',
-              '7' => 'Почерковедческие',
-              '8' => 'Рецензирование заключений экспертов',
-          ],['multiple' =>true]);
-        ?>
-        </div>
-        <div class="col-sm-12">
+        <div class="col-sm-8">
             <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
