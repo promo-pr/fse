@@ -57,14 +57,15 @@ $this->title = Yii::$app->name;
                             <div class="form-group">
                                 <select id="form-search-experts"  class="form-control">
                                     <option value="" disabled selected="selected">Вид экспертизы</option>
-                                    <option value="1">Финансово-экономические</option>
+                                   <!-- <option value="1">Финансово-экономические</option>
                                     <option value="2">Строительно-технические</option>
                                     <option value="3">Оценочные экспертизы</option>
                                     <option value="4">Оспаривание кадастровой стоимости</option>
                                     <option value="5">Автотехнические</option>
                                     <option value="6">Товароведческие</option>
                                     <option value="7">Почерковедческие</option>
-                                    <option value="8">Рецензирование заключений экспертов</option>
+                                    <option value="8">Рецензирование заключений экспертов</option>-->
+                                    <?php foreach ($dataTypesExpert as $item){echo '<option value="'.$item->id.'" class="types_work">'.$item->name.'</option>';}?>
                                 </select>
                             </div>
                         </div>

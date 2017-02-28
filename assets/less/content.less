@@ -140,6 +140,7 @@
     }
     &:hover {
       background-color: @brand-warning;
+      cursor: pointer;
     }
   }
 }
@@ -267,5 +268,34 @@
     right: 0;
     background: fade(@brand-primary, 50%);
     z-index: 0;
+  }
+}
+.form-search-result-wrapper{
+  #form-search-result-body{
+    tr{
+      cursor: pointer;
+      border-top: 1px solid @navbar-default-toggle-hover-bg;
+      &:hover {
+        background-color: @brand-warning;
+      }
+      td{
+        border:none;
+      }
+    }
+.name{ width: 100%;}
+  }
+}
+.experts-body{
+  .table-expert{
+    box-shadow: 1px 1px 5px #777;
+  }
+  .title_item{
+    width: 200px;
+  }
+  thead{
+    background-color: @brand-hover;
+    border: none;
+    border-color: @navbar-inverse-toggle-border-color;
+    font: initial;
   }
 }

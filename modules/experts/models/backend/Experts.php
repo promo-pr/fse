@@ -134,6 +134,10 @@ class Experts extends ActiveRecord
     {
         return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
     }
+    public function getObrazovanie ()
+    {
+        return $this->hasMany(Obrazovanie::className(), ['fid' => 'id']);
+    }
 
     public static function getStatusesArray()
     {

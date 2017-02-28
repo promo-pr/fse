@@ -38,7 +38,7 @@
                     success: function(result){
                         var row = '';
                         $.each(result, function( i, obj ) {
-                            row += '<tr>';
+                            row += '<tr onclick=location.href="expert/'+obj.slug+'">';
                            // row += '<td>' +  (i+1) + '</td>';
                             row += '<td class="name">' + obj.fio +'<span class="text-muted"> | '+ obj.region+'</span> </td>';
                             row += '<td class="work_exp ">' + obj.work_exp + '</td>';
@@ -71,13 +71,12 @@
                     success: function(result){
                         var row = '';
                         $.each(result, function( i, obj ) {
-                            row += '<tr>';
+                            row += '<tr onclick=location.href="expert/'+obj.slug+'">';
                             //row += '<td>' +  (i+1) + '</td>';
                             row += '<td class="name">' + obj.fio +'<span class="text-muted"> | '+ obj.region+'</span> </td>';
-                            row += '<td class="work_exp ">' + obj.work_exp + '</td>';
+                            row += '<td class="work_exp pull-right">' + obj.work_exp + '</td>';
                             row += '</tr>';
                         });
-
                         $('.form-search-result-wrapper').fadeIn();
                         $('#form-search-result-body').html(row);
                         console.log(row);
@@ -88,7 +87,6 @@
         });
 
     });
-
     function stickyFooter() {
 
         var $body = $('body'),

@@ -46,7 +46,7 @@ return [
                 'news/<slug:[\w\-]+>' => 'post/node/view',
                 'event/<slug:[\w\-]+>' => 'event/node/view',
                 'company/<slug:[\w\-]+>' => 'restrorg/node/view',
-                'experts/<slug:[\w\-]+>' => 'experts/node/view',
+                'expert/<slug:[\w\-]+>' => 'expert/node/view',
                 '<category_slug:[\w\-]+>' => 'page/node/category',
                 '<category_slug:[\w\-]+>/<slug:[\w\-]+>' => 'page/node/view',
                 '<_m:[\w\-]+>/<_a:[\w-]+>' => '<_m>/default/<_a>',

@@ -36,6 +36,11 @@ use yii\helpers\Url;
 
 <div class="row" style="clear: both">
     <div class="col-sm-4">
+        <?=//$form->field($model, 'types_work')->textInput(['maxlength' => true])
+        $form->field($model, 'types_work[]')->checkboxList(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['multiple' =>true,'size'=>'5']);
+        ?>
+    </div>
+    <div class="col-sm-4">
         <?= //$form->field($model, 'county')->textInput(['maxlength' => true])
         $form->field($model, 'county')->dropDownList([
             '1' => 'Центральный',
@@ -49,30 +54,20 @@ use yii\helpers\Url;
         ]);
         ?>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-4">
         <?= $form->field($model, 'region')->textInput(['maxlength' => true]) ?>
     </div>
-</div>
-
-    <div class="row" style="clear: both">
-        <div class="col-sm-4">
-            <?=//$form->field($model, 'types_work')->textInput(['maxlength' => true])
-            $form->field($model, 'types_work[]')->listBox(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['multiple' =>true,'size'=>'5']);
-            ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'post')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-8">
-            <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>
-        </div>
-    </div>
-<div class="row" style="clear: both">
     <div class="col-sm-4">
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'post')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
         <?= $form->field($model, 'mail')->textInput(['maxlength' => true]) ?>
@@ -80,9 +75,15 @@ use yii\helpers\Url;
     <div class="col-sm-4">
         <?= $form->field($model, 'site')->textInput(['maxlength' => true]) ?>
     </div>
-
 </div>
 
+<div class="panel panel-primary gray">
+    <div class="panel-body">
+        <div id="dynamic-form">
+
+        </div>
+    </div>
+</div>
 
 <div class="pull-right">
     <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseSEO" aria-expanded="false" aria-controls="collapseSEO">
