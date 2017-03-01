@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\modules\experts\models\backend\Experts */
 
 $this->title = 'Редактирование: ' . $model->fio;
-$this->params['breadcrumbs'][] = ['label' => 'эксперты', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Эксперты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->fio, 'url' => ['/expert/node/view', 'slug' => $model->slug]];
 $this->params['breadcrumbs'][] = 'Редактирование';
 ?>
@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = 'Редактирование';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'modelSliderItem' => $modelSliderItem,
     ]) ?>
 
 

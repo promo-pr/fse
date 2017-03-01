@@ -17,6 +17,7 @@ use yii\db\ActiveRecord;
  * @property string $specialty
  * @property string $diplom
  * @property string $qualifications
+ * @property integer $sort_order
  */
 class Obrazovanie extends ActiveRecord
 {
@@ -42,7 +43,7 @@ class Obrazovanie extends ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['id','fid','year'], 'integer'],
+            [['id','fid','year','sort_order'], 'integer'],
             [['type', 'name', 'specialty','diplom','qualifications'], 'string', 'max' => 255],
         ];
     }

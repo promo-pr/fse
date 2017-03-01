@@ -47,19 +47,19 @@
         $('.remove-item').click(function () {
             var $item = $(this).closest('.dynamic-form-item'),
                 id = $item.find('.slider-item-id').val();
-                if (id > 0) {
-                    if (confirm('Удалить безвозвратно?')) {
-                        $.post("/admin/experts/" + id + "/slider-item-delete", function (data) {
-                            if (data) {
-                                $item.remove();
-                            }
-                        });
-                    }
-                } else {
-                    $item.remove();
+            if (id > 0) {
+                if (confirm('Удалить безвозвратно?')) {
+                    $.post("/admin/experts/" + id + "/slider-item-delete", function (data) {
+                        if (data) {
+                            $item.remove();
+                        }
+                    });
                 }
-                redactorDestroy();
-                indexItem();
+            } else {
+                $item.remove();
+            }
+            redactorDestroy();
+            indexItem();
         });
 
         $('.add-item').click(function () {
@@ -78,7 +78,12 @@
         function indexItem() {
             $dynamicForm.find('.dynamic-form-item').each( function (i) {
                 $(this).find('.slider-item-id').attr('name', 'SliderItem[' + i + '][id]');
-                $(this).find('.slider-item-title').attr('name', 'SliderItem[' + i + '][title]');
+                $(this).find('.slider-item-name').attr('name', 'SliderItem[' + i + '][name]');
+                $(this).find('.slider-item-type').attr('name', 'SliderItem[' + i + '][type]');
+                $(this).find('.slider-item-diplom').attr('name', 'SliderItem[' + i + '][diplom]');
+                $(this).find('.slider-item-year').attr('name', 'SliderItem[' + i + '][year]');
+                $(this).find('.slider-item-specialty').attr('name', 'SliderItem[' + i + '][specialty]');
+                $(this).find('.slider-item-qualifications').attr('name', 'SliderItem[' + i + '][qualifications]');
                 $(this).find('.slider-item-file').attr({'id': 'slide-' + i, 'name': 'slide-' + i});
                 var $redactorArea = $(this).find('.slider-item-body');
                 $redactorArea.attr({'id': 'redactor-' + i, 'name': 'SliderItem[' + i + '][body]'});

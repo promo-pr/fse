@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 
 class Asset extends AssetBundle
 {
-    public $sourcePath = '@app/modules/media/assets';
+    public $sourcePath = '@app/modules/experts/assets';
     public $css = [
         //'css/slider.css',
     ];
@@ -16,6 +16,6 @@ class Asset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'vova07\imperavi\Asset',
-        'app\modules\media\SortableAsset',
+        'app\modules\experts\SortableAsset',
     ];
 }

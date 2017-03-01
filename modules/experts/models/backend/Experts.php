@@ -136,7 +136,14 @@ class Experts extends ActiveRecord
     }
     public function getObrazovanie ()
     {
-        return $this->hasMany(Obrazovanie::className(), ['fid' => 'id']);
+        return $this->hasMany(Obrazovanie::className(), ['fid' => 'id'])
+            ->orderBy(['sort_order' => SORT_ASC]);
+    }
+
+    public function getItems()
+    {
+        return $this->hasMany(Obrazovanie::className(), ['fid' => 'id'])
+            ->orderBy(['sort_order' => SORT_ASC]);
     }
 
     public static function getStatusesArray()

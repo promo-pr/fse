@@ -27,6 +27,7 @@ class m170228_082044_create_obrazovanie_table extends Migration
             'specialty' => $this->string(),
             'diplom' => $this->string(),
             'qualifications' => $this->string(),
+            'sort_order'=> $this->integer(),
         ], $tableOptions);
         $this->createIndex('idx-obrazovanie-name', '{{%obrazovanie}}', 'name');
     }

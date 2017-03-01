@@ -5,6 +5,7 @@ namespace app\modules\experts\controllers\backend;
 use Yii;
 use app\modules\experts\models\backend\Experts;
 use app\modules\experts\models\backend\search\ExpertsSearch;
+use app\modules\experts\models\backend\Obrazovanie;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -53,14 +54,40 @@ class DefaultController extends Controller
     {
         $this->layout = '@app/views/layouts/admin';
         $model = new Experts();
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && $model->save()) {
+            $transaction = Yii::$app->db->beginTransaction();
+            try  {
+                $items = $post['SliderItem'];
+                $i = 0;
+                foreach ($items as $item) {
 
-        if ($model->load(Yii::$app->request->post()) ) {
+                        $sliderItem = new Obrazovanie();
+                        $sliderItem->name = $item['name'];
+                        $sliderItem->type = $item['type'];
+                        $sliderItem->specialty = $item['specialty'];
+                        $sliderItem->diplom = $item['diplom'];
+                        $sliderItem->qualifications = $item['qualifications'];
+                        $sliderItem->year = $item['year'];
+                        $sliderItem->fid = $model->id;
+                        $sliderItem->sort_order = $i;
+                        $sliderItem->save();
+
+                    $i++;
+                }
+                $transaction->commit();
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+            }
+
             $model->types_work = implode(",", $_POST['Experts']['types_work']);
             $model->save();
             return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
         } else {
+            $modelSliderItem[0] = new Obrazovanie();
             return $this->render('create', [
                 'model' => $model,
+                'modelSliderItem' => $modelSliderItem,
             ]);
         }
     }
@@ -75,14 +102,50 @@ class DefaultController extends Controller
     {
         $this->layout = '@app/views/layouts/admin';
         $model = $this->findModel($id);
-        if ($model->load(Yii::$app->request->post())) {
+        $post = Yii::$app->request->post();
+        if ($model->load($post)) {
+
+            $transaction = Yii::$app->db->beginTransaction();
+            try  {
+                $i = 0;
+                foreach ($post['SliderItem'] as $item) {
+                    $err = $_FILES['slide-' . $i]['error'];
+                    if ( $item['id'] > 0 || $err == 0 || $item['title'] !== '' || $item['body'] !== '' ) {
+                        if ($item['id'] > 0) {
+                            $sliderItem = Obrazovanie::findOne($item['id']);
+                        } else {
+                            $sliderItem = new Obrazovanie();
+                        }
+
+                        $sliderItem->name = $item['name'];
+                        $sliderItem->type = $item['type'];
+                        $sliderItem->specialty = $item['specialty'];
+                        $sliderItem->diplom = $item['diplom'];
+                        $sliderItem->qualifications = $item['qualifications'];
+                        $sliderItem->year = $item['year'];
+                        $sliderItem->fid = $model->id;
+                        $sliderItem->sort_order = $i;
+                        $sliderItem->save();
+                    }
+                    $i++;
+                }
+                $transaction->commit();
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+            }
+
             $model->types_work = implode(",", $_POST['Experts']['types_work']);
             if ($model->save()) {
                 return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
             }
         } else {
+            $items = $model->obrazovanie;
+            if ( !count($items) ) {
+                $items[0] = new Obrazovanie();
+            }
             return $this->render('update', [
                 'model' => $model,
+                'modelSliderItem' => $items,
             ]);
         }
     }
@@ -98,6 +161,11 @@ class DefaultController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionObrazovanieItemDelete($id)
+    {
+        return Obrazovanie::findOne($id)->delete();
     }
 
     /**

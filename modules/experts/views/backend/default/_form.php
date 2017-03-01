@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use app\modules\file\widgets\FileInput;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
+use app\modules\experts\Asset;
 use app\modules\experts\models\backend\ExpertsTypes;
 use vova07\imperavi\Widget;
 use app\widgets\date\Picker;
@@ -11,8 +12,9 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\experts\models\backend\Experts */
+/* @var $modelSliderItem app\modules\experts\models\backend\Obrazovanie */
 /* @var $form yii\widgets\ActiveForm */
-
+Asset::register($this);
 ?>
 
 <?php $form = ActiveForm::begin([
@@ -80,7 +82,12 @@ use yii\helpers\Url;
 <div class="panel panel-primary gray">
     <div class="panel-body">
         <div id="dynamic-form">
-
+            <?php foreach($modelSliderItem as $i => $item) { ?>
+                <?= $this->render('_item', [
+                    'i' => $i,
+                    'item' => $item,
+                ]) ?>
+            <?php } ?>
         </div>
     </div>
 </div>
