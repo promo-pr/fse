@@ -14,10 +14,11 @@
         $('.nav-side .dropdown.active .dropdown-toggle').trigger('click');
 
         $('#slider1').bxSlider({
-            minSlides: 3,
-            maxSlides: 3,
+            minSlides: 1,
+            maxSlides: 1,
             slideWidth: 255,
-            slideMargin: 30,
+            auto: true,
+            pager: false
         });
 
         $('#form-search').on('change keyup', function (form) {

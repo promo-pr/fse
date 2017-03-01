@@ -44,8 +44,8 @@ echo Yii::$app->user->isGuest ?
 echo Html::encode($model->fio);
 $this->endBlock(); ?>
 
-<div class="container experts-body" >
-    <div class="col-xs-12">
+<div class="experts-body" >
+    <div class="">
     <div class="field-body">
         <table class="table table-bordered table-expert">
             <thead>

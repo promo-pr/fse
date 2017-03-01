@@ -29,6 +29,7 @@ return [
                     'rules' => [
                         '' => 'default/index',
                         '<_a:(flush)>' => 'default/<_a>',
+                        'upload/<_a>/<fid:\d+>' =>'files/upload/<_a>',
                         '<_m>/create' => '<_m>s/default/create',
                         '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
                         '<_m:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/default/<_a>',

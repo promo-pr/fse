@@ -29,7 +29,7 @@ echo Yii::$app->user->isGuest ?
 echo Html::encode($model->title);
 $this->endBlock(); ?>
 
-<div class="container event-body" >
+<div class="event-body" >
     <div class="col-xs-12">
      <div class="field-date-event">
          <h3 class="event_date"> Дата начала мероприятия: <?= date('d.m.Y в H:i',$model->date) ?></h3>

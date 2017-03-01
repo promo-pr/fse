@@ -47,19 +47,19 @@
         $('.remove-item').click(function () {
             var $item = $(this).closest('.dynamic-form-item'),
                 id = $item.find('.slider-item-id').val();
-            if (id > 0) {
-                if (confirm('Удалить безвозвратно?')) {
-                    $.post("/admin/experts/" + id + "/slider-item-delete", function (data) {
-                        if (data) {
-                            $item.remove();
-                        }
-                    });
+                if (id > 0) {
+                    if (confirm('Удалить безвозвратно?')) {
+                        $.post("/admin/experts/" + id + "/slider-item-delete", function (data) {
+                            if (data) {
+                                $item.remove();
+                            }
+                        });
+                    }
+                } else {
+                    $item.remove();
                 }
-            } else {
-                $item.remove();
-            }
-            redactorDestroy();
-            indexItem();
+                redactorDestroy();
+                indexItem();
         });
 
         $('.add-item').click(function () {

@@ -6,6 +6,7 @@ use app\modules\post\models\backend\Post;
 use app\modules\restrorg\models\backend\Restrorg;
 use app\modules\experts\models\backend\ExpertsTypes;
 use yii\widgets\LinkPager;
+use yii\helpers\Url;
 
 
 /* @var $this yii\web\View */
@@ -15,16 +16,23 @@ $this->title = Yii::$app->name;
 ?>
 <div class="block news-block">
     <div class="container">
-            <?= \yii\widgets\ListView::widget([
+        <div class="block-title text-center">
+            Новости
+        </div>
+        <?= \yii\widgets\ListView::widget([
             'dataProvider' => $dataPageMain,
             'itemView' => '_main_news',
             'layout' => "{items}", //"{summary}\n{items}\n{pager}"
             'options' => [
-            'class' => 'row',
+                'class' => 'row',
+            ],
+            'itemOptions' => [
+                'class' => 'col-md-6 media',
             ]
-            ]);?>
-        <?=Html::a('<div class="col-md-12 mute text-center"><u class="text-muted">Все новости</u></div>', ['/site/default/news']) ?>
-
+        ]);?>
+        <div class="col-md-12 text-center">
+            <?=Html::a('ЗАГРУЗИТЬ ЕЩЁ', ['/site/default/news'],['class'=>'btn btn-warning']) ?>
+        </div>
     </div>
 </div>
 
@@ -57,14 +65,6 @@ $this->title = Yii::$app->name;
                             <div class="form-group">
                                 <select id="form-search-experts"  class="form-control">
                                     <option value="" disabled selected="selected">Вид экспертизы</option>
-                                   <!-- <option value="1">Финансово-экономические</option>
-                                    <option value="2">Строительно-технические</option>
-                                    <option value="3">Оценочные экспертизы</option>
-                                    <option value="4">Оспаривание кадастровой стоимости</option>
-                                    <option value="5">Автотехнические</option>
-                                    <option value="6">Товароведческие</option>
-                                    <option value="7">Почерковедческие</option>
-                                    <option value="8">Рецензирование заключений экспертов</option>-->
                                     <?php foreach ($dataTypesExpert as $item){echo '<option value="'.$item->id.'" class="types_work">'.$item->name.'</option>';}?>
                                 </select>
                             </div>
@@ -86,13 +86,13 @@ $this->title = Yii::$app->name;
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input id="form-search-name" type="text" class="form-control" placeholder="ФИО или название организации">
+                                <input id="form-search-name" type="text" class="form-control" placeholder="ФИО эксперта">
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-warning" name="search-button">НАЙТИ</button>
-                            </div>
+                            <p class="text-muted">
+                                Начните вводить фамилию эксперта, поиск начнется автоматически
+                            </p>
                         </div>
                     </div>
                 </form>
@@ -124,42 +124,35 @@ $this->title = Yii::$app->name;
 <div class="block slider-block">
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <div class="block-title text-center">РЕЕСТР АККРЕДИТОВАННЫХ НЕГОСУДАРСТВЕННЫХ СУДЕБНО-ЭКСПЕРТНЫХ ОРГАНИЗАЦИЙ</div>
+            </div>
             <div class="col-sm-3">
-                <div class="block-title text-center">РЕЕСТР ЧЛЕНОВ СОЮЗА ФЭСЭ</div>
-            </div>
-            <div class="col-sm-9">
-                <div class="block-title text-center">РЕЕСТР АККРЕДИТОВАННЫХ ОРГАНИЗАЦИЙ</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="bx-wrapper"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-            </div>
-            <div class="col-sm-9">
-               <!-- <div id="slider1" class="slider">
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>
-                    <div class="slide"><img src="/img/1.jpg" alt="Свидетельство" width="250" height="350"></div>-->
-                    <?= \yii\widgets\ListView::widget([
-                        'dataProvider' => $dataImg_org_Main,
-                        'itemView' => '_main_img',
-                        'layout' => "{items}", //"{summary}\n{items}\n{pager}"
-                        'itemOptions'=>[
-                            'tag'=>'div',
-                            'class'=>'slide',
+                <?= \yii\widgets\ListView::widget([
+                    'dataProvider' => $dataImg_org_Main,
+                    'itemView' => '_main_img',
+                    'layout' => "{items}", //"{summary}\n{items}\n{pager}"
+                    'itemOptions'=>[
+                        'tag'=>'div',
+                        'class'=>'slide',
                     ],
-                        'options'=>[
-                            'tag'=>'div',
-                            'class'=>'slider',
-                            'id'=>'slider1',
-                        ],
-                    ]);?>
-            <!--    </div>-->
+                    'options'=>[
+                        'tag'=>'div',
+                        'class'=>'slider',
+                        'id'=>'slider1',
+                    ],
+                ]);?>
+            </div>
+            <div class="col-sm-9">
+                <blockquote>
+                <h4>Федеральный закон от 31 мая 2001 г. N 73-ФЗ "О государственной судебно-экспертной деятельности в Российской Федерации"</h4>
+                <strong>Статья 41. Распространение действия настоящего Федерального закона на судебно-экспертную деятельность лиц, не являющихся государственными судебными экспертами
+</strong>
+                <p>В соответствии с нормами процессуального законодательства Российской Федерации судебная экспертиза может производиться вне государственных судебно-экспертных учреждений лицами, обладающими специальными знаниями в области науки, техники, искусства или ремесла, но не являющимися государственными судебными экспертами.
+</p>
+                <p>На судебно-экспертную деятельность лиц, указанных в части первой настоящей статьи, распространяется действие статей 2, 3, 4, 6 - 8, 16 и 17, части второй статьи 18, статей 24 и 25 настоящего Федерального закона.
+            </p>
+                </blockquote>
             </div>
         </div>
     </div>
@@ -202,8 +195,34 @@ $this->title = Yii::$app->name;
     </div>
 </div>
 
-<div class="container">
-    <img src="/img/111.jpg" style="max-width: 100%"/>
+<div class="block book-block">
+    <div class="container">
+        <div class="block-title text-center">
+            НАСТОЛЬНАЯ КНИГА ОЦЕНЩИКА, СУДЬИ и  ЮРИСТА
+        </div>
+        <div class="media">
+            <div class="media-left">
+                <img class="media-object" src="/img/8.jpg" alt="Книга">
+            </div>
+            <div class="media-body">
+                <p>
+                    Оценочная деятельность играет важную роль во многих областях современной экономики – от макроэкономических общегосударственных масштабов до управления отдельно взятым предприятием. В целом ряде случаев закон требует обязательного проведения оценки – при сделках с государственным и муниципальным имуществом, операциях с ценными бумагами, недвижимостью, при наследовании, причинении имущественного вреда, а также начислении имущественных налогов с величины кадастровой стоимости, определяемой оценщиком, и т.д. однако в настоящее время на пути эффективного функционирования института оценки В России встают проблемы, связанные с качественной стороной методов регулирования. Общее назначение регулирования оценочной деятельности – способствовать решению экономических проблем.
+                </p>
+                <p>
+                    Книга будет полезна как для широкого круга практикующих оценщиков и юристов, так и для преподавателей, студентов юридических и экономических вузов, лиц, проходящих профессиональную переподготовку по специальности «оценщик», в качестве учебного пособия. Данное издание вызовет интерес и у заказчиков оценки.
+                </p>
+                <p>Цена: 800 руб</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="http://fsosro.ru/01.01.08.02/book_list.aspx" class="btn btn-warning" target="_blank">КУПИТЬ КНИГУ</a>
+            <?=  Html::button("КУПИТЬ КНИГУ", ['class'=>'btn btn-warning ajax-popup',
+                    'href'=>Url::to(['/site/contact/ajaxpop','title' => 'Заказать книгу', 'title_body' => 'Чтобы заказать книгу, оставьте заявку
+']),
+                ]
+            )?>
+        </div>
+    </div>
 </div>
 
 <div class="prefooter bg-overlay text-center">
