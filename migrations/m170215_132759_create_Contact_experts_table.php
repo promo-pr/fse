@@ -22,6 +22,8 @@ class m170215_132759_create_Contact_experts_table extends Migration
             'county' => $this->integer(),
             'fio' => $this->string(),
             'work_exp' => $this->string(),
+            'degree'=>$this->string(),
+            'partaker'=>$this->string(),
             'region' => $this->string(),
             'company' => $this->string(),
             'post' => $this->string(),

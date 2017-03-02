@@ -62,6 +62,7 @@ class DefaultController extends Controller
                 $i = 0;
                 foreach ($items as $item) {
 
+                    if ( $item['title'] !== '' || $item['body'] !== '' ) {
                         $sliderItem = new Obrazovanie();
                         $sliderItem->name = $item['name'];
                         $sliderItem->type = $item['type'];
@@ -71,11 +72,11 @@ class DefaultController extends Controller
                         $sliderItem->year = $item['year'];
                         $sliderItem->fid = $model->id;
                         $sliderItem->sort_order = $i;
-                        $sliderItem->save();
-
+                        $sliderItem->save();$transaction->commit();
+                    }
                     $i++;
                 }
-                $transaction->commit();
+
             } catch (\Exception $e) {
                 $transaction->rollBack();
             }

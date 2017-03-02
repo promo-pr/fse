@@ -22,17 +22,7 @@ use yii\db\ActiveRecord;
 class Obrazovanie extends ActiveRecord
 {
 
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'name',
-                'immutable' => true,
-                'ensureUnique' => true,
-            ],
-        ];
-    }
+
 
     public static function tableName()
     {
@@ -54,7 +44,7 @@ class Obrazovanie extends ActiveRecord
             'id' => 'ID',
             'Fid' => 'связь с',
             'name' => 'Наименование образовательного учереждения',
-            'type' => 'Образование',
+            'type' => 'Тип образования',
             'specialty' => 'Специальность',
             'qualifications'=>'Квалификация',
             'diplom'=>'диплом',

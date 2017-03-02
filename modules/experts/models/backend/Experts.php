@@ -28,6 +28,8 @@ use yii\helpers\ArrayHelper;
  * @property string $updated_at
  * @property string $status
  * @property string $slug
+ * @property string $degree
+ * @property string $partaker
  */
 class Experts extends ActiveRecord
 {
@@ -72,7 +74,7 @@ class Experts extends ActiveRecord
             [['fio'], 'required'],
             [['types_work','created_at', 'updated_at'], 'safe'],
             [['status','county'], 'integer'],
-            [['adress', 'phone', 'slug','mail','site','post','company','region','work_exp'], 'string', 'max' => 255],
+            [['adress', 'phone', 'slug','mail','site','post','company','region','work_exp','degree','partaker'], 'string', 'max' => 255],
         ];
     }
 
@@ -89,6 +91,8 @@ class Experts extends ActiveRecord
             'company' => 'Компания ',
             'region' => 'Регион',
             'work_exp' => 'Стаж ',
+            'degree'=>'Ученая степень, звание',
+            'partaker'=>'Членство в организациях',
             'adress' => 'Адрес',
             'phone' => 'Контактный телефон',
             'mail' => 'e-mail',

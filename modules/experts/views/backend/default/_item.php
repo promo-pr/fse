@@ -1,5 +1,5 @@
 <?php
-
+use yii\bootstrap\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $item app\modules\experts\models\backend\obrazovanie */
 
@@ -23,11 +23,11 @@
             </div>
             <div class="col-xs-4 col-md-4">
                 <label class="control-label">Тип образования</label>
-                <select class="slider-item-type form-control" name="SliderItem[<?= $i ?>][type]" value="<?= $item->type; ?>">
-                    <option value="1">Сведения о высшем образовании</option>
-                    <option value="2">Сведения о дополнительном образовании</option>
-                    <option value="3">Сведения о повышении квалификации</option>
-                    <option value="4">Наличие дополнительных квалификационных аттестатов</option>
+                <select class="slider-item-type form-control" name="SliderItem[<?= $i ?>][type]">
+                    <option value="1" <?php if ($item->type==1) echo 'selected';?>>Сведения о высшем образовании</option>
+                    <option value="2" <?php if ($item->type==2) echo 'selected';?>>Сведения о дополнительном образовании</option>
+                    <option value="3" <?php if ($item->type==3) echo 'selected';?>>Сведения о повышении квалификации</option>
+                    <option value="4" <?php if ($item->type==4) echo 'selected';?>>Наличие дополнительных квалификационных аттестатов</option>
                 </select>
             </div>
         </div>

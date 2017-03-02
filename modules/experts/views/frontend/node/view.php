@@ -27,7 +27,7 @@ $type_obrazovanie = [
     '1' => 'Сведения о высшем образовании',
     '2' => 'Сведения о дополнительном образовании',
     '3' => 'Сведения о повышении квалификации',
-];
+    '4' => 'Наличие дополнительных квалификационных аттестатов',];
 $types_expertize = ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name');
 $dataPage = new ActiveDataProvider([
     'query' => Experts::find()->where(['status'=>1])->orderBy('updated_at DESC'),
@@ -77,7 +77,7 @@ $this->endBlock(); ?>
 
             <?php
             $i=1;
-            while($i <4 ){
+            while($i <5 ){
             foreach ($model->obrazovanie as $obraz) {
                 if ($obraz->type==$i){ //Сведения о  образовании?>
                     <tr>
@@ -93,14 +93,17 @@ $this->endBlock(); ?>
                                         <td class="title_item">Год окончания</td><td><?=$obraz->year;?></td>
                                     </tr>
                                     <tr>
-                                        <td class="title_item">Номер диплома и дата выдачи</td><td><?=$obraz->diplom;?></td>
+                                        <td class="title_item"><?=$i==4?'Номер Аттестата':'Номер диплома и дата выдачи'?></td><td><?=$obraz->diplom;?></td>
                                     </tr>
+                                    <?= $obraz->specialty?'
                                     <tr>
-                                        <td class="title_item">Специальность</td><td><?=$obraz->specialty;?></td>
-                                    </tr>
+                                        <td class="title_item">Специальность</td><td>'.$obraz->specialty.'</td>
+                                    </tr>':'' ?>
+                                    <?= $obraz->qualifications?'
                                     <tr>
-                                        <td class="title_item">Квалификация, профессия</td><td><?=$obraz->qualifications?></td>
-                                    </tr>
+                                        <td class="title_item">Квалификация, профессия</td><td>'.$obraz->qualifications.'</td>
+                                    </tr>':'' ?>
+
                                 </table>
                             <?php  }}break;?>
 
@@ -110,21 +113,15 @@ $this->endBlock(); ?>
             }$i++;}?>
 
             <tr>
-                <td class="title_item">Наличие дополнительных квалификационных аттестатов</td>
-                <td>
-Проф аттестат
-                </td>
-            </tr>
-            <tr>
                 <td class="title_item">Сведения о наличии ученной степени, ученого звания</td>
                 <td>
-                   нет
+                    <?= $model->degree?$model->degree:"Нет" ?>
                 </td>
             </tr>
             <tr>
                 <td class="title_item">Членство в саморегулируемых организациях и иных некомерческих организациях</td>
                 <td>
-                    нет
+                    <?= $model->partaker?$model->partaker:"Нет" ?>
                 </td>
             </tr>
             </tbody>

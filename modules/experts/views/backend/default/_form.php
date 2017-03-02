@@ -66,6 +66,12 @@ Asset::register($this);
         <?= $form->field($model, 'post')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
+        <?= $form->field($model, 'degree')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'partaker')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
         <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
