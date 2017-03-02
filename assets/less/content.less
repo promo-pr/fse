@@ -276,17 +276,37 @@
 }
 .form-search-result-wrapper{
   #form-search-result-body{
-    tr{
+    .search-title{
       cursor: pointer;
       border-top: 1px solid @navbar-default-toggle-hover-bg;
       &:hover {
         background-color: @brand-warning;
-      }
-      td{
-        border:none;
+        font: initial;
       }
     }
-.name{ width: 100%;}
+    .body_items{
+      background-color: @brand-hover;
+      font: initial;
+    }
+    .contact_val{
+      font: initial;
+    }
+    .activeted{
+      background-color: @brand-warning;
+      font: initial;
+    }
+    td{
+      border:none;
+    }
+   .contact-about{
+     cursor: pointer;
+     &:hover {
+       color: @breadcrumb-active-color;
+     }
+   }
+    .snow{
+      display: none;
+    }
   }
 }
 .experts-body{
@@ -302,4 +322,13 @@
     border-color: @navbar-inverse-toggle-border-color;
     font-weight: 400;
   }
+}
+.book{
+  .fade.in{
+    opacity: 0;
+  }
+  label{
+    display: none;
+  }
+
 }

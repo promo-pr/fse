@@ -5,9 +5,10 @@ use yii\data\ActiveDataProvider;
 use app\modules\post\models\backend\Post;
 use app\modules\restrorg\models\backend\Restrorg;
 use app\modules\experts\models\backend\ExpertsTypes;
+use app\modules\site\models\ContactForm;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
-
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 
@@ -45,15 +46,6 @@ $this->title = Yii::$app->name;
                     Поиск экспертов по видам экспертиз
                 </div>
                 <ul class="spec-list bordered">
-                    <!--<li><i class="material-icons">done</i><a href="#"> Финансово-экономические</a> <span class="badge">142</span></li>
-                    <li><i class="material-icons">done</i><a href="#"> Строительно-технические</a> <span class="badge">112</span></li>
-                    <li><i class="material-icons">done</i><a href="#"> Оценочные экспертизы</a> <span class="badge">123</span></li>
-                    <li><i class="material-icons">done</i><a href="#"> Оспаривание кадастровой стоимости</a> <span class="badge">45</span></li>
-                    <li><i class="material-icons">done</i><a href="#"> Автотехнические</a> <span class="badge">81</span></li>
-                    <li><i class="material-icons">done</i><a href="#"> Товароведческие</a> <span class="badge">34</span></li>
-                    <li><i class="material-icons">done</i><a href="#"> Почерковедческие</a> <span class="badge">12</span></li>
-                    <li><i class="material-icons">done</i><a href="#"> Рецензирование заключений экспертов</a> <span class="badge">27</span></li>
-                    -->
                     <?php foreach ($dataTypesExpert as $item){echo '<li value="'.$item->id.'" class="types_work"><i class="material-icons">done</i><a>'.$item->name.'</a> <span class="badge">'.ExpertsTypes::getTypes_work($item->id).'</span></li>';}?>
                 </ul>
                 <div class="block-title text-center">
@@ -113,9 +105,8 @@ $this->title = Yii::$app->name;
 <div class="block form-search-result-wrapper" style="display: none">
     <div class="container">
         <div class="block-title text-center">РЕЗУЛЬТАТЫ ПОИСКА</div>
-        <div class="pull-right"><a href="">Показать подробное описание</a>|<i class="material-icons">list</i></div>
         <table id="form-search-result" class="table table-hover">
-            <thead> <tr> <!--<th>#</th>--> <th>ФИО</th> <th>Стаж</th></tr> </thead>
+            <thead> <tr><th>ФИО</th> <th class="text-right">Стаж</th></tr> </thead>
             <tbody id="form-search-result-body"> </tbody>
         </table>
     </div>
@@ -215,12 +206,25 @@ $this->title = Yii::$app->name;
             </div>
         </div>
         <div class="text-center">
-            <a href="http://fsosro.ru/01.01.08.02/book_list.aspx" class="btn btn-warning" target="_blank">КУПИТЬ КНИГУ</a>
-            <?=  Html::button("КУПИТЬ КНИГУ", ['class'=>'btn btn-warning ajax-popup',
-                    'href'=>Url::to(['/site/contact/ajaxpop','title' => 'Заказать книгу', 'title_body' => 'Чтобы заказать книгу, оставьте заявку
-']),
-                ]
-            )?>
+           <!-- <a href="http://fsosro.ru/01.01.08.02/book_list.aspx" class="btn btn-warning" target="_blank">КУПИТЬ КНИГУ</a>-->
+            <?php
+            yii\bootstrap\Modal::begin([
+                'header' => '<h3>Заказать книгу</h3>',
+                'toggleButton' => ['label' => 'КУПИТЬ КНИГУ','class'=>'btn btn-warning' ],
+                'options'=>['class'=>'book','style'=>'top:200px;'],
+            ]);
+            $model = new ContactForm();
+             $form = ActiveForm::begin(['id' => 'contact-form']);?>
+            <?= $form->field($model, 'subject', ['options'=>['class'=>'element-invisible']])->textInput(['value' => 'Заказ книги']); ?>
+            <?= $form->field($model, 'name', ['options'=>['class'=>'required-name']])->textInput(['placeholder' => 'Введите Ваше имя'])?>
+            <?= $form->field($model, 'phone')->label('Ваш телефон')->textInput(['placeholder' => 'Введите Ваше телефон']); ?>
+            <?= $form->field($model, 'body', ['options'=>['class'=>'element-invisible']])->textInput(['value' => 'Номер телефона']); ?>
+            <?= $form->field($model, 'email')->label('Ваш E-mail')->textInput(['placeholder' => 'Введите Ваше e-mail']); ?>
+            <div class="form-group">
+                <?= Html::submitButton('Заказать', ['class' => 'btn btn-warning', 'name' => 'contact-button']) ?>
+            </div>
+            <?php ActiveForm::end();
+            yii\bootstrap\Modal::end();?>
         </div>
     </div>
 </div>
@@ -231,10 +235,6 @@ $this->title = Yii::$app->name;
         <a href="/join" class="btn btn-warning btn-shadow">УСЛОВИЯ ВСТУПЛЕНИЯ <span class="hidden-xs"> В СОЮЗ ФИНАНСОВО-ЭКОНОМИЧЕСКИХ СУДЕБНЫХ ЭКСПЕРТОВ</span></a>
     </div>
 </div>
-
-
-
-
 
 
 

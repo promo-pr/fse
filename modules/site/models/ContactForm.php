@@ -15,6 +15,7 @@ class ContactForm extends Model
     public $email;
     public $subject;
     public $body;
+    public $phone;
 
     /**
      * @return array the validation rules.
@@ -22,7 +23,7 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            [['email', 'body'], 'required'],
+            [['email', 'body','phone'], 'required'],
             ['email', 'email'],
         ];
     }
@@ -37,6 +38,7 @@ class ContactForm extends Model
             'email' => 'Ваш email для ответа',
             'subject' => 'Тема сообщения',
             'body' => 'Сообщение',
+            'phone' => 'Телефон',
         ];
     }
 

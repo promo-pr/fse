@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'subject', ['options'=>['class'=>'element-invisible']]); ?>
                 <?= $form->field($model, 'name', ['options'=>['class'=>'required-name']]) ?>
                 <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+                <?= $form->field($model, 'phone', ['options'=>['class'=>'element-invisible']])->textInput(['value' => '&thinsp;']); ?>
                 <?= $form->field($model, 'email') ?>
                 <div class="form-group">
                     <?= Html::submitButton('Отправить', ['class' => 'btn btn-warning', 'name' => 'contact-button']) ?>
