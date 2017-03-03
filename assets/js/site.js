@@ -1,7 +1,6 @@
 (function ($) {
 
     $(function() {
-
         $('.header-title-h1').click(function () {
             location.href = '/';
         });
@@ -36,39 +35,7 @@
                         'types_work':types_work
                     },
                     dataType: "json",
-                    success: function(result){
-                        var row = '';
-                        $.each(result, function( i, obj ) {
-                            row += '<tr class="search-title" title="Контакты" onclick=$(this).toggleClass("activeted");$(".search-body_'+i+'").toggleClass("snow");>';
-                            //row += '<td>' +  (i+1) + '</td>';
-                            row += '<td class="name">' + obj.fio +'<span class="text-muted"> | '+ obj.region+'</span> </td>';
-                            row += '<td class="text-right">' + obj.work_exp + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">location_city</i> Адресс </td>';
-                            row += '<td class="contact_val text-right">' + obj.adress + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">contact_phone</i> Контактный телефон</td>';
-                            row += '<td class="contact_val text-right">' + obj.phone + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">contact_mail</i> Электронная почта</td>';
-                            row += '<td class="contact_val text-right">' + obj.mail + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">dvr</i>Сайт</td>';
-                            row += '<td class="contact_val text-right">' + obj.site + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="contact-about text-right" colspan="2" title="Открыть информацию об эксперте" onclick=location.href="expert/'+obj.slug+'"><span class="btn btn-warning">Подробнее</span></td>';
-                            row += '</tr>';
-                        });
-
-                        $('.form-search-result-wrapper').fadeIn();
-                        $('#form-search-result-body').html(row);
-                        console.log(row);
-                    }
+                    success: function(result){searchExperts(result)}
                 });
             } else {
                 $('.form-search-result-wrapper').fadeOut();
@@ -87,44 +54,48 @@
                         'types_work':types_work
                     },
                     dataType: "json",
-                    success: function(result){
-                        var row = '';
-                        $.each(result, function( i, obj ) {
-                            row += '<tr class="search-title" title="Контакты" onclick=$(this).toggleClass("activeted");$(".search-body_'+i+'").toggleClass("snow");>';
-                            //row += '<td>' +  (i+1) + '</td>';
-                            row += '<td class="name">' + obj.fio +'<span class="text-muted"> | '+ obj.region+'</span> </td>';
-                            row += '<td class="text-right">' + obj.work_exp + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">location_city</i> Адресс </td>';
-                            row += '<td class="contact_val text-right">' + obj.adress + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">contact_phone</i> Контактный телефон</td>';
-                            row += '<td class="contact_val text-right">' + obj.phone + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">contact_mail</i> Электронная почта</td>';
-                            row += '<td class="contact_val text-right">' + obj.mail + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items"><i class="material-icons">dvr</i> Сайт</td>';
-                            row += '<td class="contact_val text-right">' + obj.site + '</td>';
-                            row += '</tr>';
-                            row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="contact-about text-right" colspan="2" title="Открыть информацию об эксперте" onclick=location.href="expert/'+obj.slug+'"><span class="btn btn-warning">Подробнее</span></td>';
-                            row += '</tr>';
-                        });
-                        $('.form-search-result-wrapper').fadeIn();
-                        $('#form-search-result-body').html(row);
-                        console.log(row);
-                    }
+                    success: function(result){searchExperts(result)}
                 });
 
 
         });
 
     });
+
+    function searchExperts(result) {
+
+        var row = '';
+        $.each(result, function( i, obj ) {
+            row += '<tr class="search-title" title="Контакты" onclick=$(this).toggleClass("activeted");$(".search-body_'+i+'").toggleClass("snow");>';
+            //row += '<td>' +  (i+1) + '</td>';
+            row += '<td class="name">' + obj.fio +'<span class="text-muted"> | '+ obj.region+'</span> </td>';
+            row += '<td class="text-right">' + obj.work_exp + '</td>';
+            row += '</tr>';
+            row += '<tr class="body_items search-body_'+i+' snow">';
+            row += '<td class="text-muted contact_items"><i class="material-icons">location_city</i> Адресс </td>';
+            row += '<td class="contact_val text-right">' + obj.adress + '</td>';
+            row += '</tr>';
+            row += '<tr class="body_items search-body_'+i+' snow">';
+            row += '<td class="text-muted contact_items"><i class="material-icons">contact_phone</i> Контактный телефон</td>';
+            row += '<td class="contact_val text-right">' + obj.phone + '</td>';
+            row += '</tr>';
+            row += '<tr class="body_items search-body_'+i+' snow">';
+            row += '<td class="text-muted contact_items"><i class="material-icons">contact_mail</i> Электронная почта</td>';
+            row += '<td class="contact_val text-right">' + obj.mail + '</td>';
+            row += '</tr>';
+            row += '<tr class="body_items search-body_'+i+' snow">';
+            row += '<td class="text-muted contact_items"><i class="material-icons">dvr</i> Сайт</td>';
+            row += '<td class="contact_val text-right">' + obj.site + '</td>';
+            row += '</tr>';
+            row += '<tr class="body_items search-body_'+i+' snow">';
+            row += '<td class="contact-about text-right" colspan="2" title="Открыть информацию об эксперте" onclick=location.href="expert/'+obj.slug+'"><span class="btn btn-warning">Подробнее</span></td>';
+            row += '</tr>';
+        });
+        $('.form-search-result-wrapper').fadeIn();
+        $('#form-search-result-body').html(row);
+        console.log(row);
+    }
+
     function stickyFooter() {
 
         var $body = $('body'),

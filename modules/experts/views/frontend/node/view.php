@@ -12,6 +12,9 @@ use yii\widgets\LinkPager;
 /* @var $model app\modules\experts\models\backend\Experts */
 /* @var $attach_image */
 
+
+$this->params['breadcrumbs'][] = $model->fio;
+
 //$images = $model->getAttachFiles('image');
 $country = [
     '1' => 'Центральный',
@@ -63,7 +66,7 @@ $this->endBlock(); ?>
             <tr>
                 <td class="title_item">Виды экспертиз</td><td>
                     <ul>
-                        <?php foreach ($model->types_work as $item){echo '<li>'.$types_expertize[$item].'</li>';} ?>
+                        <?php foreach ($typeItems as $item){echo '<li>'.$types_expertize[$item->type].'</li>';} ?>
                     </ul>
                 </td>
             </tr>

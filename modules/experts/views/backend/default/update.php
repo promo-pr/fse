@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Редактирование';
     <?= $this->render('_form', [
         'model' => $model,
         'modelSliderItem' => $modelSliderItem,
+        'typeItems' =>$typeItems,
     ]) ?>
 
 

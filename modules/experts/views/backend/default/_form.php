@@ -1,15 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use app\modules\file\widgets\FileInput;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\modules\experts\Asset;
 use app\modules\experts\models\backend\ExpertsTypes;
-use vova07\imperavi\Widget;
-use app\widgets\date\Picker;
-use yii\helpers\Url;
-
+use app\modules\experts\models\backend\TypesExperts;
 /* @var $this yii\web\View */
 /* @var $model app\modules\experts\models\backend\Experts */
 /* @var $modelSliderItem app\modules\experts\models\backend\Obrazovanie */
@@ -38,8 +34,7 @@ Asset::register($this);
 
 <div class="row" style="clear: both">
     <div class="col-sm-4">
-        <?=//$form->field($model, 'types_work')->textInput(['maxlength' => true])
-        $form->field($model, 'types_work[]')->checkboxList(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['multiple' =>true,'size'=>'5']);
+        <?=$form->field($model, 'types_work[]')->checkboxList(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['value' => true,'multiple' =>true,'size'=>'5']);
         ?>
     </div>
     <div class="col-sm-4">

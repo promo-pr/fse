@@ -2,10 +2,8 @@
 
 namespace app\modules\experts\models\backend;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\SluggableBehavior;
-use app\modules\file\FilesBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
@@ -148,6 +146,11 @@ class Experts extends ActiveRecord
     {
         return $this->hasMany(Obrazovanie::className(), ['fid' => 'id'])
             ->orderBy(['sort_order' => SORT_ASC]);
+    }
+
+    public function getTypes()
+    {
+        return $this->hasMany(TypesExperts::className(), ['fid' => 'id']);
     }
 
     public static function getStatusesArray()

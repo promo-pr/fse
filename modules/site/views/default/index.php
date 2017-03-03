@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use app\modules\experts\models\backend\ExpertsTypes;
+use app\modules\experts\models\backend\TypesExperts;
 use yii\helpers\Url;
 
 
@@ -41,7 +41,7 @@ $this->title = Yii::$app->name;
                     Поиск экспертов по видам экспертиз
                 </div>
                 <ul class="spec-list bordered">
-                    <?php foreach ($dataTypesExpert as $item){echo '<li value="'.$item->id.'" class="types_work"><i class="material-icons">done</i><a>'.$item->name.'</a> <span class="badge">'.ExpertsTypes::getTypes_work($item->id).'</span></li>';}?>
+                    <?php foreach ($dataTypesExpert as $item){echo '<li value="'.$item->id.'" class="types_work"><i class="material-icons">done</i><a>'.$item->name.'</a> <span class="badge">'.TypesExperts::getTypes_count($item->id).'</span></li>';}?>
                 </ul>
                 <div class="block-title text-center">
                     Расширенный поиск

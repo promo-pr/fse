@@ -6,6 +6,7 @@ use Yii;
 use app\modules\experts\models\backend\Experts;
 use app\modules\experts\models\backend\search\ExpertsSearch;
 use app\modules\experts\models\backend\Obrazovanie;
+use app\modules\experts\models\backend\TypesExperts;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -81,14 +82,24 @@ class DefaultController extends Controller
                 $transaction->rollBack();
             }
 
+            foreach ($_POST['Experts']['types_work'] as $type_item) {
+                $typeItems = new TypesExperts();
+                $typeItems->fid = $model->id;
+                $typeItems->type = $type_item;
+                $typeItems->save();
+
+            }
+
             $model->types_work = implode(",", $_POST['Experts']['types_work']);
             $model->save();
             return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
         } else {
             $modelSliderItem[0] = new Obrazovanie();
+            $items_type_expertiz[0]=new TypesExperts;
             return $this->render('create', [
                 'model' => $model,
                 'modelSliderItem' => $modelSliderItem,
+                'typeItems' =>$items_type_expertiz,
             ]);
         }
     }
@@ -135,6 +146,20 @@ class DefaultController extends Controller
                 $transaction->rollBack();
             }
 
+            foreach ($_POST['Experts']['types_work'] as $type_item) {
+
+                    if ($type_item > 0) {
+                        $typeItems = TypesExperts::findOne($type_item);
+                    } else {
+                        $typeItems = new TypesExperts();
+                    }
+
+                $typeItems->fid = $model->id;
+                $typeItems->type = $type_item;
+                $typeItems->save();
+                }
+
+
             $model->types_work = implode(",", $_POST['Experts']['types_work']);
             if ($model->save()) {
                 return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
@@ -144,9 +169,15 @@ class DefaultController extends Controller
             if ( !count($items) ) {
                 $items[0] = new Obrazovanie();
             }
+
+            $itemst = $model->types;
+            if ( !count($itemst) ) {
+                $itemst[0] = new TypesExperts();
+            }
             return $this->render('update', [
                 'model' => $model,
                 'modelSliderItem' => $items,
+                'typeItems' =>$itemst,
             ]);
         }
     }
