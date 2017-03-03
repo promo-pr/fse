@@ -3,9 +3,9 @@
 namespace app\modules\site\controllers;
 
 use app\modules\site\models\ContactForm;
+use app\modules\site\models\CallForm;
 use yii\web\Controller;
 use Yii;
-use yii\web\HttpException;
 
 class ContactController extends Controller
 {
@@ -23,5 +23,43 @@ class ContactController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionAjaxpop($title, $title_body)
+    {
+
+        $model = new CallForm();
+        if (Yii::$app->request->isAjax) {
+            if ( $model->load(Yii::$app->request->post()) && $model->sendAjaxForm(Yii::$app->params['adminEmail']) ) {
+                $message = '<div class="container" ><div class="text-center thank-page ">
+	<img src="img/checkmark.png" alt="" class="text-center">
+	<h3 style="color: wheat">Спасибо за ваш заказ</h3>
+	<p style="color: wheat">наш администратор позвонит вам в ближайшее время</p>
+</div></div>'; // TODO: Refactor
+                return $message;
+            } else {
+
+                return $this->renderPartial('callpop', [
+                    'model' => $model,
+                    'title' => $title,
+                    'title_body'=>$title_body,
+
+                ]);
+            }
+        } else {
+            if ($model->load(Yii::$app->request->post()) && $model->sendAjaxForm(Yii::$app->params['adminEmail'])) {
+                Yii::$app->session->setFlash('contactFormSubmitted');
+                return $this->refresh();
+            } else {
+                return $this->render('callpop', [
+                    'model' => $model,
+                    'title' => $title,
+                    'title_body'=>$title_body,
+
+                ]);
+            }
+        }
+
+
     }
 }

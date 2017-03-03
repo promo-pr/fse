@@ -45,19 +45,19 @@
                             row += '<td class="text-right">' + obj.work_exp + '</td>';
                             row += '</tr>';
                             row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items">Адресс </td>';
+                            row += '<td class="text-muted contact_items"><i class="material-icons">location_city</i> Адресс </td>';
                             row += '<td class="contact_val text-right">' + obj.adress + '</td>';
                             row += '</tr>';
                             row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items">Контактный телефон</td>';
+                            row += '<td class="text-muted contact_items"><i class="material-icons">contact_phone</i> Контактный телефон</td>';
                             row += '<td class="contact_val text-right">' + obj.phone + '</td>';
                             row += '</tr>';
                             row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items">Електронная почта</td>';
+                            row += '<td class="text-muted contact_items"><i class="material-icons">contact_mail</i> Электронная почта</td>';
                             row += '<td class="contact_val text-right">' + obj.mail + '</td>';
                             row += '</tr>';
                             row += '<tr class="body_items search-body_'+i+' snow">';
-                            row += '<td class="text-muted contact_items">Сайт</td>';
+                            row += '<td class="text-muted contact_items"><i class="material-icons">dvr</i>Сайт</td>';
                             row += '<td class="contact_val text-right">' + obj.site + '</td>';
                             row += '</tr>';
                             row += '<tr class="body_items search-body_'+i+' snow">';
@@ -140,4 +140,103 @@
 
     }
 
+    // Magnific Popup setting Default
+    $.extend(true, $.magnificPopup.defaults, {
+        mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+        zoom: {
+            enabled: true, // By default it's false, so don't forget to enable it
+            duration: 300, // duration of the effect, in milliseconds
+            easing: 'ease-in-out', // CSS transition easing function
+            opener: function (openerElement) {
+                return openerElement.is('img') ? openerElement : openerElement.find('img');
+            }
+        },
+        tClose: 'Закрыть (Esc)', // Alt text on close button
+        tLoading: 'Загрузка...', // Text that is displayed during loading. Can contain %curr% and %total% keys
+        gallery: {
+            tPrev: 'Назад', // Alt text on left arrow
+            tNext: 'Вперед', // Alt text on right arrow
+            tCounter: '%curr% из %total%' // Markup for "1 of 7" counter
+        },
+        image: {
+            tError: '<a href="%url%">Изображение</a> не найдено.' // Error message when image could not be loaded
+        },
+        ajax: {
+            tError: '<a href="%url%">Содержимое</a> не найдено.' // Error message when ajax request failed
+        }
+    });
+
+    $('.image-popup').magnificPopup({   // One Image popup
+        type: 'image'
+    });
+    $('.image-popup').magnificPopup({   // One Image popup
+        type: 'image'
+    });
+
+    $('.image-gallery').each(function() {   //Gallery
+        $(this).magnificPopup({
+            delegate: '.image-item', // the selector for gallery item
+            type: 'image',
+            gallery: {
+                enabled:true,
+                navigateByImgClick: true,
+                preload: [1,1]
+            }
+        });
+    });
+
+    $('.iframe-popup').magnificPopup({   //Iframe
+        type: 'iframe'
+    });
+
+    $('.inline-popup').magnificPopup({   //Iframe
+        type: 'inline'
+    });
+
+    $('.ajax-popup').magnificPopup({    //Ajax
+        type: 'ajax'
+    });
+    $('.popup-with-form').magnificPopup({
+        type: 'inline',
+        preloader: false,
+        focus: '#name',
+
+        // When elemened is focused, some mobile browsers in some cases zoom in
+        // It looks not nice, so we disable it:
+        callbacks: {
+            beforeOpen: function() {
+                if($(window).width() < 700) {
+                    this.st.focus = false;
+                } else {
+                    this.st.focus = '#name';
+                }
+            }
+        }
+    });
+    //Ajax-form-widget
+    $(document).on('ready ajaxComplete', function () {
+        $('.ajax-form').on( 'submit', function(e) {
+            e.preventDefault();
+            var $form = $(this);
+            var formData = $(this).serialize();
+            $(this).find('button:submit')
+                .html('<i class="material-icons refresh-animate">cached</i></span>&nbsp;Подождите...')
+                .addClass('disabled');
+            $.ajax({
+                url: $form.attr('action'),
+                type: $form.attr('method'),
+                data: formData,
+                success: function (data) {
+                    $form.replaceWith($(data).children());
+                },
+                error: function () {
+                    alert('Что-то пошло не так. Попробуйте позже.');
+                }
+            });
+        });
+        $('.has-error').children(':input').on('change', function (e) {
+            $(e.target).parent().removeClass('has-error');
+            $(e.target).siblings('.help-block-error').remove();
+        });
+    });
 })(jQuery);

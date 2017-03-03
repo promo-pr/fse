@@ -10,11 +10,14 @@ class SiteAsset extends AssetBundle
     public $sourcePath = '@app/assets';
     public $css = [
         'css/jquery.bxslider.min.css',
-        'css/site.css'
+        'css/site.css',
+        'lib/magnific-popup.css'
     ];
     public $js = [
         'js/lib.js',
         'js/jquery.bxslider.min.js',
+        'lib/jquery.magnific-popup.js',
+        'lib/jquery.magnific-popup.min.js',
         'js/site.js'
     ];
     public $depends = [

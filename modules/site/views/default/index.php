@@ -1,14 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\data\ActiveDataProvider;
-use app\modules\post\models\backend\Post;
-use app\modules\restrorg\models\backend\Restrorg;
 use app\modules\experts\models\backend\ExpertsTypes;
-use app\modules\site\models\ContactForm;
-use yii\widgets\LinkPager;
 use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
+
 
 /* @var $this yii\web\View */
 
@@ -207,24 +202,10 @@ $this->title = Yii::$app->name;
         </div>
         <div class="text-center">
            <!-- <a href="http://fsosro.ru/01.01.08.02/book_list.aspx" class="btn btn-warning" target="_blank">КУПИТЬ КНИГУ</a>-->
-            <?php
-            yii\bootstrap\Modal::begin([
-                'header' => '<h3>Заказать книгу</h3>',
-                'toggleButton' => ['label' => 'КУПИТЬ КНИГУ','class'=>'btn btn-warning' ],
-                'options'=>['class'=>'book','style'=>'top:200px;'],
-            ]);
-            $model = new ContactForm();
-             $form = ActiveForm::begin(['id' => 'contact-form']);?>
-            <?= $form->field($model, 'subject', ['options'=>['class'=>'element-invisible']])->textInput(['value' => 'Заказ книги']); ?>
-            <?= $form->field($model, 'name', ['options'=>['class'=>'required-name']])->textInput(['placeholder' => 'Введите Ваше имя'])?>
-            <?= $form->field($model, 'phone')->label('Ваш телефон')->textInput(['placeholder' => 'Введите Ваше телефон']); ?>
-            <?= $form->field($model, 'body', ['options'=>['class'=>'element-invisible']])->textInput(['value' => 'Номер телефона']); ?>
-            <?= $form->field($model, 'email')->label('Ваш E-mail')->textInput(['placeholder' => 'Введите Ваше e-mail']); ?>
-            <div class="form-group">
-                <?= Html::submitButton('Заказать', ['class' => 'btn btn-warning', 'name' => 'contact-button']) ?>
-            </div>
-            <?php ActiveForm::end();
-            yii\bootstrap\Modal::end();?>
+            <?=  Html::button("КУПИТЬ КНИГУ", ['class'=>'btn btn-warning ajax-popup',
+                    'href'=>Url::to(['/site/contact/ajaxpop','title' => 'Заказать книгу', 'title_body' => 'Чтобы заказать книгу, оставьте заявку']),
+                ]
+            )?>
         </div>
     </div>
 </div>
