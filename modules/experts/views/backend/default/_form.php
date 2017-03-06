@@ -15,7 +15,7 @@ Asset::register($this);
 
 <?php $form = ActiveForm::begin([
     'options'=>['enctype'=>'multipart/form-data'] // important
-]); ?>
+]);?>
 <div class="row">
     <div class="col-xs-9 col-md-9">
         <?= $form->field($model, 'fio')->textInput(['maxlength' => true]) ?>
@@ -31,11 +31,19 @@ Asset::register($this);
         ]) ?>
     </div>
 </div>
+<?php
+foreach ($typeItems as $itemt){
+    echo $itemt->type;
+}
+$list2 = [1,2];
 
+$model->types_work = array(2,4)
+?>
 <div class="row" style="clear: both">
     <div class="col-sm-4">
-        <?=$form->field($model, 'types_work[]')->checkboxList(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['value' => true,'multiple' =>true,'size'=>'5']);
+        <?=$form->field($model, 'types_work[]')->checkboxList(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['value' => true,'multiple' =>true]);
         ?>
+        <?=$form->field($model, 'types_work[]')->listBox(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'), ['options' => ['2' => ['selected' => 'selected']]]);?>
     </div>
     <div class="col-sm-4">
         <?= //$form->field($model, 'county')->textInput(['maxlength' => true])

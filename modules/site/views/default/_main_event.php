@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use app\modules\site\controllers\DefaultController;
 /* @var $attach_image */
 
 $images = $model->getAttachFiles('image');
@@ -19,7 +20,7 @@ $images = $model->getAttachFiles('image');
     <div class="media-body">
         <span class="event_time"><i class="material-icons">event</i>&nbsp; <?= date('j.m.Y в H:i',$model->date) ?> </span>
          <?=Html::a('<h4>'.$model->title.'</h4>', ['/event/node/view', 'slug'=>$model->slug],['class'=>'item'])?>
-        <p> <?= mb_substr(strip_tags($model->body),0,400); ?></p>
+        <p><?= DefaultController::mbCutString(strip_tags($model->body), 400) ?></p>
     </div>
 
 

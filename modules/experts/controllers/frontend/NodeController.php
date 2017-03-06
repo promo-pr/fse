@@ -3,11 +3,21 @@
 namespace app\modules\experts\controllers\frontend;
 
 use yii\web\Controller;
+use app\modules\experts\models\backend\search\ExpertsSearch;
 use app\modules\experts\models\backend\Experts;
 use app\modules\experts\models\backend\TypesExperts;
 
 class NodeController extends Controller
 {
+    public function actionIndex()
+    {
+        $searchModel = new ExpertsSearch();
+
+        return $this->render('index', [
+            'model' => $searchModel,
+        ]);
+    }
+
     public function actionView($slug)
     {
         $model = $this->findModelBySlug($slug);

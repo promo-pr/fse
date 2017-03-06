@@ -12,7 +12,7 @@ use yii\widgets\LinkPager;
 /* @var $model app\modules\experts\models\backend\Experts */
 /* @var $attach_image */
 
-
+$this->params['breadcrumbs'][] = ['label' => 'Эксперты', 'url' => ['/expert/node/index']];
 $this->params['breadcrumbs'][] = $model->fio;
 
 //$images = $model->getAttachFiles('image');

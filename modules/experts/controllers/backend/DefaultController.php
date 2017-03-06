@@ -90,7 +90,7 @@ class DefaultController extends Controller
 
             }
 
-            $model->types_work = implode(",", $_POST['Experts']['types_work']);
+            //$model->types_work = implode(",", $_POST['Experts']['types_work']);
             $model->save();
             return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
         } else {
@@ -160,7 +160,7 @@ class DefaultController extends Controller
                 }
 
 
-            $model->types_work = implode(",", $_POST['Experts']['types_work']);
+          //  $model->types_work = implode(",", $_POST['Experts']['types_work']);
             if ($model->save()) {
                 return $this->redirect(['/expert/node/view', 'slug' => $model->slug]);
             }
@@ -174,6 +174,7 @@ class DefaultController extends Controller
             if ( !count($itemst) ) {
                 $itemst[0] = new TypesExperts();
             }
+            $model->types_work=$itemst;
             return $this->render('update', [
                 'model' => $model,
                 'modelSliderItem' => $items,
@@ -195,11 +196,10 @@ class DefaultController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionObrazovanieItemDelete($id)
+    public function actionSliderItemDelete($id)
     {
         return Obrazovanie::findOne($id)->delete();
     }
-
     /**
      * Finds the Restorg model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

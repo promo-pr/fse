@@ -41,6 +41,8 @@ return [
                 '' => 'site/default/index',
                 'contact' => 'site/contact/index',
                 'news' => 'site/default/news',
+                'expert' => 'expert/node/index',
+                'company' => 'restrorg/node/index',
                 'event' => 'site/default/event',
                 '<_a:(error|search)>' => 'site/default/<_a>',
                 '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset)>' => 'user/default/<_a>',

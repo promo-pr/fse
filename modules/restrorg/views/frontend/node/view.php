@@ -10,6 +10,8 @@ use yii\widgets\LinkPager;
 /* @var $model app\modules\restrorg\models\backend\Restrorg */
 /* @var $attach_image */
 
+$this->params['breadcrumbs'][] = ['label' => 'Организации', 'url' => ['/restrorg/node/index']];
+$this->params['breadcrumbs'][] = $model->name;
 $images = $model->getAttachFiles('image');
 
 $dataPage = new ActiveDataProvider([
