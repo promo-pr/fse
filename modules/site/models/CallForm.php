@@ -4,27 +4,26 @@ namespace app\modules\site\models;
 
 use Yii;
 use yii\base\Model;
+use app\components\TelefonValidator;
+use yii\helpers\Html;
 
-
-/**
- * ContactForm is the model behind the contact form.
- */
-class ContactForm extends Model
+class CallForm extends Model
 {
     public $name;
-    public $email;
-    public $subject;
+    public $tel;
+    public $hour;
+    public $min;
     public $body;
-    public $phone;
-
+    
     /**
      * @return array the validation rules.
      */
     public function rules()
     {
         return [
-            [['email', 'body','phone'], 'required'],
-            ['email', 'email'],
+            [['tel','body'], 'required'],
+            ['name', 'required'],
+            ['tel', TelefonValidator::className()],
         ];
     }
 
@@ -35,10 +34,9 @@ class ContactForm extends Model
     {
         return [
             'name' => 'Имя',
-            'email' => 'Ваш email для ответа',
-            'subject' => 'Тема сообщения',
-            'body' => 'Сообщение',
-            'phone' => 'Телефон',
+            'tel' => 'Номер телефона',
+            'body' => 'Коментарий',
+
         ];
     }
 
@@ -47,15 +45,16 @@ class ContactForm extends Model
      * @param  string  $email the target email address
      * @return boolean whether the model passes validation
      */
-    public function contact($email)
+    public function sendAjaxForm($email)
     {
         if ($this->validate()) {
+            //$body = 'Name: '.$this->name.' Telefon: '.$this->tel.'Коментарий: '.$this->body;
             Yii::$app->mailer->compose()
                 ->setTo($email)
                 ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
-                ->setReplyTo([$this->email => $this->name])
                 ->setSubject(Yii::$app->name)
-                ->setTextBody($this->body)
+
+                ->setHtmlBody('Name: '.Html::encode($this->name).' Telefon: '.$this->tel.' Koment: '.Html::encode($this->body))
                 ->send();
 
             return true;
@@ -63,10 +62,4 @@ class ContactForm extends Model
             return false;
         }
     }
-
-    public function validate($attributeNames = null, $clearErrors = true)
-    {
-        return parent::validate($attributeNames, $clearErrors);
-    }
-
 }

@@ -2,10 +2,8 @@
 
 namespace app\modules\experts\models\backend;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\SluggableBehavior;
-use app\modules\file\FilesBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
@@ -28,6 +26,8 @@ use yii\helpers\ArrayHelper;
  * @property string $updated_at
  * @property string $status
  * @property string $slug
+ * @property string $degree
+ * @property string $partaker
  */
 class Experts extends ActiveRecord
 {
@@ -72,7 +72,7 @@ class Experts extends ActiveRecord
             [['fio'], 'required'],
             [['types_work','created_at', 'updated_at'], 'safe'],
             [['status','county'], 'integer'],
-            [['adress', 'phone', 'slug','mail','site','post','company','region','work_exp'], 'string', 'max' => 255],
+            [['adress', 'phone', 'slug','mail','site','post','company','region','work_exp','degree','partaker'], 'string', 'max' => 255],
         ];
     }
 
@@ -89,6 +89,8 @@ class Experts extends ActiveRecord
             'company' => 'Компания ',
             'region' => 'Регион',
             'work_exp' => 'Стаж ',
+            'degree'=>'Ученая степень, звание',
+            'partaker'=>'Членство в организациях',
             'adress' => 'Адрес',
             'phone' => 'Контактный телефон',
             'mail' => 'e-mail',
@@ -133,6 +135,22 @@ class Experts extends ActiveRecord
     public function getStatusName()
     {
         return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
+    }
+    public function getObrazovanie ()
+    {
+        return $this->hasMany(Obrazovanie::className(), ['fid' => 'id'])
+            ->orderBy(['sort_order' => SORT_ASC]);
+    }
+
+    public function getItems()
+    {
+        return $this->hasMany(Obrazovanie::className(), ['fid' => 'id'])
+            ->orderBy(['sort_order' => SORT_ASC]);
+    }
+
+    public function getTypes()
+    {
+        return $this->hasMany(TypesExperts::className(), ['fid' => 'id']);
     }
 
     public static function getStatusesArray()

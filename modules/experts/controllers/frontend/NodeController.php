@@ -2,14 +2,22 @@
 
 namespace app\modules\experts\controllers\frontend;
 
-use Yii;
 use yii\web\Controller;
+use app\modules\experts\models\backend\search\ExpertsSearch;
 use app\modules\experts\models\backend\Experts;
-use yii\web\NotFoundHttpException;
-use yii\data\Pagination;
+use app\modules\experts\models\backend\TypesExperts;
 
 class NodeController extends Controller
 {
+    public function actionIndex()
+    {
+        $searchModel = new ExpertsSearch();
+
+        return $this->render('index', [
+            'model' => $searchModel,
+        ]);
+    }
+
     public function actionView($slug)
     {
         $model = $this->findModelBySlug($slug);
@@ -17,28 +25,13 @@ class NodeController extends Controller
         $this->actionParams = [
             'node' => $model->id,
         ];
-     /*   $model->seotitle ? Yii::$app->view->title = $model->seotitle : Yii::$app->view->title = $model->title;
-        Yii::$app->view->registerMetaTag([
-            'name' => 'keywords',
-            'content' => $model->keywords,
-        ]);
-        Yii::$app->view->registerMetaTag([
-            'name' => 'description',
-            'content' => $model->description,
-        ]);
-
-        $prev = $model->getPrev();
-        $next = $model->getNext();
-        $last=$model->getLast();
-        $first=$model->getfirst();**/
-
-
+        $itemst = $model->types;
+        if ( !count($itemst) ) {
+            $itemst[0] = new TypesExperts();
+        }
         return $this->render('view', [
             'model' => $model,
-           /* 'next' => $next,
-            'prev' => $prev,
-            'last' => $last,
-            'first' => $first,*/
+            'typeItems' =>$itemst,
         ]);
     }
 

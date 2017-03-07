@@ -1,7 +1,7 @@
 <?php
 
 $config = [
-    'id' => 'my_app',
+    'id' => 'Союз ФЭСЭ',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
@@ -14,8 +14,8 @@ $config = [
                 ],
                 'files' => [
                     'class' => 'app\modules\file\Module',
-                    'controllerNamespace' => 'app\modules\file\controllers\backend',
-                    'viewPath' => '@app/modules/file/views/backend',
+                    'controllerNamespace' => 'app\modules\file\controllers',
+                    'viewPath' => '@app/modules/file/views',
                 ],
                 //модуль новости
                 'posts' => [

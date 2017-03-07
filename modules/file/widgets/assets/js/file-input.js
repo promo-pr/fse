@@ -23,7 +23,7 @@
                 $img.cropper('getCroppedCanvas').toBlob(function (blob) {
                     var formData = new FormData();
                     formData.append('Crop', blob);
-                        $.ajax('/admin/upload/crop?fid=' + fid, {
+                        $.ajax('/admin/files/upload/crop?fid=' + fid, {
                             method: "POST",
                             data: formData,
                             processData: false,

@@ -111,7 +111,11 @@
 #map {
   border-top: 4px solid @brand-primary;
 }
-
+.news-block {
+  .media:first-child{
+    margin-top: 15px;
+  }
+}
 .download {
   position: relative;
   img {
@@ -140,6 +144,7 @@
     }
     &:hover {
       background-color: @brand-warning;
+      cursor: pointer;
     }
   }
 }
@@ -268,4 +273,62 @@
     background: fade(@brand-primary, 50%);
     z-index: 0;
   }
+}
+.form-search-result-wrapper{
+  #form-search-result-body{
+    .search-title{
+      cursor: pointer;
+      border-top: 1px solid @navbar-default-toggle-hover-bg;
+      &:hover {
+        background-color: @brand-warning;
+        font: initial;
+      }
+    }
+    .body_items{
+      background-color: @brand-hover;
+      font: initial;
+    }
+    .contact_val{
+      font: initial;
+    }
+    .activeted{
+      background-color: @brand-warning;
+      font: initial;
+    }
+    td{
+      border:none;
+    }
+   .contact-about{
+     cursor: pointer;
+     &:hover {
+       color: @breadcrumb-active-color;
+     }
+   }
+    .snow{
+      display: none;
+    }
+  }
+}
+.experts-body{
+  .table-expert{
+    box-shadow: 1px 1px 5px #777;
+  }
+  .title_item{
+    width: 200px;
+  }
+  thead{
+    background-color: @brand-hover;
+    border: none;
+    border-color: @navbar-inverse-toggle-border-color;
+    font-weight: 400;
+  }
+}
+.book{
+  .fade.in{
+    opacity: 0;
+  }
+  label{
+    display: none;
+  }
+
 }

@@ -12,6 +12,9 @@ use yii\widgets\LinkPager;
 /* @var $model app\modules\experts\models\backend\Experts */
 /* @var $attach_image */
 
+$this->params['breadcrumbs'][] = ['label' => 'Эксперты', 'url' => ['/expert/node/index']];
+$this->params['breadcrumbs'][] = $model->fio;
+
 //$images = $model->getAttachFiles('image');
 $country = [
     '1' => 'Центральный',
@@ -23,6 +26,11 @@ $country = [
     '7' => 'Приволжский',
     '8' => 'Северо-Кавказский',
 ];
+$type_obrazovanie = [
+    '1' => 'Сведения о высшем образовании',
+    '2' => 'Сведения о дополнительном образовании',
+    '3' => 'Сведения о повышении квалификации',
+    '4' => 'Наличие дополнительных квалификационных аттестатов',];
 $types_expertize = ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name');
 $dataPage = new ActiveDataProvider([
     'query' => Experts::find()->where(['status'=>1])->orderBy('updated_at DESC'),
@@ -39,25 +47,150 @@ echo Yii::$app->user->isGuest ?
 echo Html::encode($model->fio);
 $this->endBlock(); ?>
 
-<div class="container experts-body" >
-
-    <div class="col-xs-12">
+<div class="experts-body" >
+    <div class="">
     <div class="field-body">
-        <div class="name"><h4>Фамилия Имя Отчетво: </h4><?= $model->fio ?></div>
-        <div class="name"><h4>Федеральный округ: </h4><?= $country[$model->county] ?></div>
-        <div class="name"><h4>Стаж работы: </h4><?= $model->work_exp ?></div>
-        <div class="name"><h4>Регион: </h4><?= $model->region ?></div>
-        <div class="name"><h4>Компания: </h4><?= $model->company ?></div>
-        <div class="name"><h4>Должность: </h4><?= $model->post ?></div>
-        <div class="type_work"><h4>Виды экспертиз: </h4>
-            <ul>
-            <?php foreach ($model->types_work as $item){echo '<li>'.$types_expertize[$item].'</li>';} ?>
-            </ul>
-        </div>
-        <div class="adress"><h4>Адрес: </h4><?= $model->adress ?></div>
-        <div class="phone"><h4>Контактный телефон: </h4><?= $model->phone ?></div>
-        <div class="mail"><h4>E-mail: </h4><?= $model->mail ?></div>
-        <div class="site"><h4 >Сайт: </h4><?= $model->site ?></div>
+        <table class="table table-bordered table-expert">
+            <thead>
+            <tr>
+                <td class="title title_item">Фамилия, Имя, Отчество</td><td><?= $model->fio ?></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="title_item">Федеральный округ</td><td><?= $country[$model->county] ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Город</td><td><?=$model->adress ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Виды экспертиз</td><td>
+                    <ul>
+                        <?php foreach ($typeItems as $item){echo '<li>'.$types_expertize[$item->type].'</li>';} ?>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+                <td class="title_item text-center" colspan="2">Сведения об образовании</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <?php
+            $i=1;
+            while($i <5 ){
+            foreach ($model->obrazovanie as $obraz) {
+                if ($obraz->type==$i){ //Сведения о  образовании?>
+                    <tr>
+                        <td class="title_item"><?= $type_obrazovanie[$i];?></td>
+                        <td>
+                            <?php foreach ($model->obrazovanie as $obraz) {
+                            if ($obraz->type==$i){?>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td class="title_item">Наименование образовательного учереждения</td><td><?= $obraz->name ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title_item">Год окончания</td><td><?=$obraz->year;?></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title_item"><?=$i==4?'Номер Аттестата':'Номер диплома и дата выдачи'?></td><td><?=$obraz->diplom;?></td>
+                                    </tr>
+                                    <?= $obraz->specialty?'
+                                    <tr>
+                                        <td class="title_item">Специальность</td><td>'.$obraz->specialty.'</td>
+                                    </tr>':'' ?>
+                                    <?= $obraz->qualifications?'
+                                    <tr>
+                                        <td class="title_item">Квалификация, профессия</td><td>'.$obraz->qualifications.'</td>
+                                    </tr>':'' ?>
+
+                                </table>
+                            <?php  }}break;?>
+
+                        </td>
+                    </tr>
+          <?php  }
+            }$i++;}?>
+
+            <tr>
+                <td class="title_item">Сведения о наличии ученной степени, ученого звания</td>
+                <td>
+                    <?= $model->degree?$model->degree:"Нет" ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="title_item">Членство в саморегулируемых организациях и иных некомерческих организациях</td>
+                <td>
+                    <?= $model->partaker?$model->partaker:"Нет" ?>
+                </td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+                <td class="title_item text-center" colspan="2">Сведения о стаже</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="title_item">Стаж работы по специальности</td>
+                <td><?= $model->work_exp ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Стаж судебной экспертной деятльности</td>
+                <td><?= $model->work_exp ?></td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+                <td class="title_item text-center" colspan="2">Сведения о месте работы</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="title_item">Должность</td>
+                <td><?= $model->post ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Организация</td>
+                <td><?= $model->company ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Работа по совместительству</td>
+                <td>Нет</td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+                <td class="title_item text-center" colspan="2">Контактные данные</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="title_item">Место нахождение организации</td>
+                <td><?= $model->adress ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Почтовый адресс</td>
+                <td><?= $model->adress ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Телефон рабочий</td>
+                <td><?= $model->phone ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Электронная почта</td>
+                <td><?= $model->mail ?></td>
+            </tr>
+            <tr>
+                <td class="title_item">Сайт</td>
+                <td><?= $model->site ?></td>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
 

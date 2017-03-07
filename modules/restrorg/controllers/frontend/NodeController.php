@@ -5,11 +5,22 @@ namespace app\modules\restrorg\controllers\frontend;
 use Yii;
 use yii\web\Controller;
 use app\modules\restrorg\models\backend\Restrorg;
+use app\modules\restrorg\models\backend\search\RestrorgSearch;
 use yii\web\NotFoundHttpException;
 use yii\data\Pagination;
 
 class NodeController extends Controller
 {
+    public function actionIndex()
+    {
+        $searchModel = new RestrorgSearch();
+
+        return $this->render('index', [
+            'model' => $searchModel,
+        ]);
+    }
+
+
     public function actionView($slug)
     {
         $model = $this->findModelBySlug($slug);

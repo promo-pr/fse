@@ -1,23 +1,21 @@
 <?php
 
 use yii\helpers\Html;
-use app\modules\file\widgets\FileInput;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
+use app\modules\experts\Asset;
 use app\modules\experts\models\backend\ExpertsTypes;
-use vova07\imperavi\Widget;
-use app\widgets\date\Picker;
-use yii\helpers\Url;
-
+use app\modules\experts\models\backend\TypesExperts;
 /* @var $this yii\web\View */
 /* @var $model app\modules\experts\models\backend\Experts */
+/* @var $modelSliderItem app\modules\experts\models\backend\Obrazovanie */
 /* @var $form yii\widgets\ActiveForm */
-
+Asset::register($this);
 ?>
 
 <?php $form = ActiveForm::begin([
     'options'=>['enctype'=>'multipart/form-data'] // important
-]); ?>
+]);?>
 <div class="row">
     <div class="col-xs-9 col-md-9">
         <?= $form->field($model, 'fio')->textInput(['maxlength' => true]) ?>
@@ -33,8 +31,20 @@ use yii\helpers\Url;
         ]) ?>
     </div>
 </div>
+<?php
+foreach ($typeItems as $itemt){
+    echo $itemt->type;
+}
+$list2 = [1,2];
 
+$model->types_work = array(2,4)
+?>
 <div class="row" style="clear: both">
+    <div class="col-sm-4">
+        <?=$form->field($model, 'types_work[]')->checkboxList(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['value' => true,'multiple' =>true]);
+        ?>
+        <?=$form->field($model, 'types_work[]')->listBox(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'), ['options' => ['2' => ['selected' => 'selected']]]);?>
+    </div>
     <div class="col-sm-4">
         <?= //$form->field($model, 'county')->textInput(['maxlength' => true])
         $form->field($model, 'county')->dropDownList([
@@ -49,30 +59,26 @@ use yii\helpers\Url;
         ]);
         ?>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-4">
         <?= $form->field($model, 'region')->textInput(['maxlength' => true]) ?>
     </div>
-</div>
-
-    <div class="row" style="clear: both">
-        <div class="col-sm-4">
-            <?=//$form->field($model, 'types_work')->textInput(['maxlength' => true])
-            $form->field($model, 'types_work[]')->listBox(ArrayHelper::map(ExpertsTypes::find()->all(), 'id', 'name'),['multiple' =>true,'size'=>'5']);
-            ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'post')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-8">
-            <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>
-        </div>
-    </div>
-<div class="row" style="clear: both">
     <div class="col-sm-4">
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'post')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'degree')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'partaker')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'adress')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
         <?= $form->field($model, 'mail')->textInput(['maxlength' => true]) ?>
@@ -80,9 +86,20 @@ use yii\helpers\Url;
     <div class="col-sm-4">
         <?= $form->field($model, 'site')->textInput(['maxlength' => true]) ?>
     </div>
-
 </div>
 
+<div class="panel panel-primary gray">
+    <div class="panel-body">
+        <div id="dynamic-form">
+            <?php foreach($modelSliderItem as $i => $item) { ?>
+                <?= $this->render('_item', [
+                    'i' => $i,
+                    'item' => $item,
+                ]) ?>
+            <?php } ?>
+        </div>
+    </div>
+</div>
 
 <div class="pull-right">
     <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseSEO" aria-expanded="false" aria-controls="collapseSEO">

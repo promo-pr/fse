@@ -24,13 +24,16 @@ echo 'Новости';
 echo Html::encode($model->title);
 $this->endBlock(); ?>
 
-<div class="container">
+<div class="">
     <?= \yii\widgets\ListView::widget([
         'dataProvider' => $dataPageMain,
         'itemView' => '_main_news',
         'layout' => "{items}\n{pager}", //"{summary}\n{items}\n{pager}"
         'options' => [
             'class' => 'row',
+        ],
+        'itemOptions' => [
+            'class' => 'media',
         ],
     ]);?>
 </div>

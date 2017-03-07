@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\modules\restrorg\models\backend\Restrorg */
 
 $this->title = 'Создание';
-$this->params['breadcrumbs'][] = ['label' => 'Организация', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Эксперты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'modelSliderItem' => $modelSliderItem,
+        'typeItems' =>$typeItems,
     ]) ?>
 
 

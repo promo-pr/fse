@@ -17,7 +17,7 @@ $images = $model->getAttachFiles('image');
 $dataPage = new ActiveDataProvider([
     'query' => Post::find()->where(['status'=>1])->orderBy('updated_at DESC'),
     'pagination' => [
-        'pageSize' => 2,
+        'pageSize' => 5,
     ],
 ]);
 
@@ -29,7 +29,7 @@ echo Yii::$app->user->isGuest ?
 echo Html::encode($model->title);
 $this->endBlock(); ?>
 
-<div class="container post-body" >
+<div class="post-body" >
 
     <div class="col-xs-12">
     <div class="field-body">
@@ -69,13 +69,16 @@ $this->endBlock(); ?>
 </div>
 
 <?php $this->beginBlock('news');
-echo "<h4>Последние новости</h4>";
+echo "<h4>Новости</h4>";
 echo \yii\widgets\ListView::widget([
     'dataProvider' => $dataPage,
     'itemView' => '_post',
     'layout' => "{items}\n{pager}", //"{summary}\n{items}\n{pager}"
     'options' => [
         'class' => 'views-bootstrap-grid-plugin-style',
+    ],
+    'itemOptions' => [
+        'class' => 'media',
     ]
 ]);
 $this->endBlock(); ?>
